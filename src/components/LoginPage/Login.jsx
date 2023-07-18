@@ -2,10 +2,15 @@ import { async } from '@firebase/util';
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useSelector } from 'react-redux';
 
 function Login() {
   const [Email, setEmail] = useState('');
   const [Pw, setPw] = useState('');
+
+  const user = useSelector((state) => state.user);
 
   const navigate = useNavigate();
 
@@ -15,24 +20,24 @@ function Login() {
       return alert('아이디와 비밀번호 모두 입력해주세요');
     }
     try {
-      !(Email || Pw);
-      userCredential = await signInWithEmailAndPassword(auth, Email, Pw);
+      const userCredential = await signInWithEmailAndPassword(auth, Email, Pw);
       navigate('/');
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log('error with signIn', errorMessage, errorCode);
-    }
-    if (errorCode === 'auth/user-not-found') {
-      alert('존재하지 않는 이메일입니다');
-    } else if (errorCode === 'auth/user-not-found');
-    {
-      alert('비밀번호가 일치하지 않습니다');
+
+      if (errorCode === 'auth/user-not-found') {
+        alert('존재하지 않는 이메일입니다');
+      } else if (errorCode === 'auth/user-not-found');
+      {
+        alert('비밀번호가 일치하지 않습니다');
+      }
     }
   };
 
   useEffect(() => {
-    onAuthStateChanged(auto, (user) => {
+    onAuthStateChanged(auth, (user) => {
       console.log('user', user);
     });
     // auto.currentUser 현재 로그인 중인 유저 정보
