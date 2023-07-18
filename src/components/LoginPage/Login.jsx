@@ -1,5 +1,3 @@
-import { async } from '@firebase/util';
-import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
@@ -16,9 +14,11 @@ function Login() {
 
   const signIn = async (event) => {
     event.preventDefault();
+
     if (!(Email || Pw)) {
       return alert('아이디와 비밀번호 모두 입력해주세요');
     }
+
     try {
       const userCredential = await signInWithEmailAndPassword(auth, Email, Pw);
       navigate('/');
@@ -35,13 +35,6 @@ function Login() {
       }
     }
   };
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      console.log('user', user);
-    });
-    // auto.currentUser 현재 로그인 중인 유저 정보
-  }, []);
 
   useEffect(() => {
     if (user?.userid) {
