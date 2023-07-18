@@ -5,7 +5,11 @@ import { createStore } from 'redux';
 import { combineReducers } from 'redux';
 // reducer들을 하나로 묶는 역할 api
 
-const rootReducer = combineReducers({});
+import users from '../modules/user';
+
+const rootReducer = combineReducers({
+  users: users
+});
 const store = createStore(rootReducer);
 
 export default store;
