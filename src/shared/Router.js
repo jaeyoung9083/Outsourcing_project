@@ -1,16 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import GlobalStyle from "../GlobalStyle";
+import { BrowserRouter, Route,  Routes } from 'react-router-dom';
+
+import Home from '../pages/Home';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <GlobalStyle>
-        <Layout>
-          <Routes>
-            <Route>{/* // */}</Route>
-          </Routes>
-        </Layout>
-      </GlobalStyle>
-    </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      </BrowserRouter>
   );
 };
+export default Router;
