@@ -1,5 +1,5 @@
 import React from 'react';
-import Video from './Video';
+import Video from '../components/ResultPage/Video';
 
 export default function Result() {
   return (
