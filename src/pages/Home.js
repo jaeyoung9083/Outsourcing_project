@@ -1,10 +1,10 @@
 import React from 'react';
-import Post from '../components/Postpage/Post';
+import Comment from '../components/Postpage/Comment';
 
 function Home() {
   return (
     <>
-      <Post />
+      <Comment />
     </>
   );
 }
