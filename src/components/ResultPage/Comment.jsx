@@ -83,7 +83,6 @@ const Comment = () => {
 
   return (
     <div>
-      <h2>댓글창</h2>
       <div>
         작성자 : <input value={name} onChange={onChangeName} />
         댓글 : <input value={content} onChange={onChangeContent} />

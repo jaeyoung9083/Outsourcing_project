@@ -1,12 +1,7 @@
 import React from 'react';
-import Comment from '../components/Postpage/Comment';
 
 function Home() {
-  return (
-    <>
-      <Comment />
-    </>
-  );
+  return <></>;
 }
 
 export default Home;
