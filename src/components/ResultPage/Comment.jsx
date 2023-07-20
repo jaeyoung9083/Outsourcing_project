@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-import { getComments, addComment, deleteComment, updateComment } from '../../libs/getGoogleSheet';
+import { getComments, addComment, deleteComment, updateComment } from '../../libs/Comments';
 
 const Comment = () => {
   const [googleSheetRows, setGoogleSheetRows] = useState([]);
@@ -83,7 +83,7 @@ const Comment = () => {
 
   return (
     <div>
-      <div>
+      <div style={{ border: '1px solid black', padding: '10px', margin: '10px' }}>
         작성자 : <input value={name} onChange={onChangeName} />
         댓글 : <input value={content} onChange={onChangeContent} />
         <button onClick={addButton}>댓글 추가</button>
