@@ -1,27 +1,22 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import BackgroundMusic from '../components/BackgroundMusic';
 
 function Home() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/quiz');
-  };
-
   return (
     <div>
+      <BackgroundMusic />
       <Header />
-
       <BodyContainer>
         <ContentContainer>
           <Heading>호그와트 기숙사 테스트</Heading>
           <Paragraph>꿀잼보장 38000%</Paragraph>
-          <Button onClick={handleClick}>설문시작!</Button>
+          <Link to={'/quiz'}>설문시작!</Link>
         </ContentContainer>
       </BodyContainer>
-
       <Footer />
     </div>
   );
