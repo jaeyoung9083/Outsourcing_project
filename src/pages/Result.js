@@ -1,6 +1,7 @@
 import React from 'react';
 import Video from '../components/ResultPage/Video';
-import Comment from '../components/ResultPage/Comment';
+// import Comment from '../components/ResultPage/Comment';
+import Comments from '../components/ResultPage/Comments';
 
 export default function Result() {
   return (
@@ -10,7 +11,8 @@ export default function Result() {
       <Video />
       {/* 댓글창 */}
       <h2>댓글창</h2>
-      <Comment />
+      {/* <Comment /> */}
+      <Comments />
     </div>
   );
 }

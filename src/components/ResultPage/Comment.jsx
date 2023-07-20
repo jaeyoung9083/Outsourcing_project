@@ -1,6 +1,7 @@
+// googlespreadsheet
 import React, { useEffect, useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
-import { getComments, addComment, deleteComment, updateComment } from '../../libs/Comments';
+import { getComments, addComment, deleteComment, updateComment } from '../../libs/Comment';
 
 const Comment = () => {
   const [googleSheetRows, setGoogleSheetRows] = useState([]);
