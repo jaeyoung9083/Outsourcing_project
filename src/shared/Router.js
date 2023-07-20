@@ -6,6 +6,7 @@ import GlobalStyle from '../GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import Layout from '../components/Layout/Layout';
 import { theme } from '../theme';
+import Result from '../pages/Result';
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Singup />} />
+          <Route path="/survey/result" element={<Result />} />
         </Routes>
         {/* </Layout> */}
         {/* </GlobalStyle> */}
