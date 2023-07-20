@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import Login from '../components/LoginPage/Login.jsx';
-import Singup from '../components/LoginPage/Singup';
+import Signup from '../components/LoginPage/Signup';
 import GlobalStyle from '../GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import Layout from '../components/Layout/Layout';
@@ -17,7 +17,7 @@ const Router = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Singup />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/survey/result" element={<Result />} />
         </Routes>
         {/* </Layout> */}
