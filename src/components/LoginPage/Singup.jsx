@@ -5,5 +5,5 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 
 function Singup() {
-  const [Ejail, setEmail] = useState;
+  const [Email, setEmail] = useState;
 }

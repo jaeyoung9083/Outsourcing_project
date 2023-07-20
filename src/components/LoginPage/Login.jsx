@@ -1,36 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
-import LoginDiv from './Loginpage.styled';
-import { signInWithEmailAndPassword } from '@firebase/auth';
-import { Input } from '../Common.styled';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useSelector } from 'react-redux';
 
 function Login() {
   const [Email, setEmail] = useState('');
-  const [PW, setPW] = useState('');
+  const [Pw, setPw] = useState('');
 
   const user = useSelector((state) => state.user);
-  let navigate = useNavigate();
 
-  const signInFunc = async (e) => {
-    e.preventDefault();
-    if (!(Email || PW)) {
-      return alert('모든 값을 채워주세요.');
+  const navigate = useNavigate();
+
+  const signIn = async (event) => {
+    event.preventDefault();
+
+    if (!(Email || Pw)) {
+      return alert('아이디와 비밀번호 모두 입력해주세요');
     }
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, Email, PW);
-
+      const userCredential = await signInWithEmailAndPassword(auth, Email, Pw);
       navigate('/');
     } catch (error) {
-      console.log(error.code);
-      if (error.code === 'auth/user-not-found') {
-        alert('존재하지 않는 이메일입니다.');
-      } else if (error.code === 'auth/wrong-password') {
-        alert('비밀번호가 일치하지 않습니다.');
-      } else {
-        alert('로그인이 실패하였습니다.');
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('error with signIn', errorMessage, errorCode);
+
+      if (errorCode === 'auth/user-not-found') {
+        alert('존재하지 않는 이메일입니다');
+      } else if (errorCode === 'auth/user-not-found');
+      {
+        alert('비밀번호가 일치하지 않습니다');
       }
     }
   };
@@ -42,29 +43,37 @@ function Login() {
   }, [user, navigate]);
 
   return (
-    <LoginDiv>
+    <div>
       <form>
-        <span>Login</span>
-        <label></label>
-        <Input
-          type="email"
-          placeholder="이메일 입력해주세요."
-          value={Email}
-          name="email"
-          onChange={(e) => setEmail(e.currentTarget.value)}
-        ></Input>
-        <br></br>
-        <Input
-          type="password"
-          placeholder="비밀번호를 입력해주세요."
-          value={PW}
-          name="password"
-          onChange={(e) => setPW(e.currentTarget.value)}
-        ></Input>
-        <br></br>
-        <button onClick={signInFunc}>로그인</button>
-        <br></br>
-        <p>가입을 안하셨나요?🤔</p>
+        <span>로그인</span>
+        <div>
+          <label>이메일 : </label>
+          <input
+            type="email"
+            placeholder="이메일을 입력해주세요"
+            value={Email}
+            name="email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <label>비밀번호 : </label>
+          <input
+            type="password"
+            placeholder="비밀전호를 입력해주세요"
+            value={Pw}
+            name="password"
+            onChange={(e) => {
+              setPw(e.target.value);
+            }}
+          />
+        </div>
+
+        <button onClick={signIn}>로그인</button>
+
+        <p>회원가입 하로 가기</p>
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -74,7 +83,7 @@ function Login() {
           회원가입
         </button>
       </form>
-    </LoginDiv>
+    </div>
   );
 }
 
