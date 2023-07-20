@@ -1,19 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { addCurrentUser, updateCurrentUser } from '../../redux/modules/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase';
 
 function Singup() {
-  // hook
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  // state 상태 관리
-  const [email, setEmail] = useState('');
-  const [pw, setPw] = useState('');
-  const [pwCheck, setCheck] = useState('');
-
-  return;
-  <div>d</div>;
+  const [Email, setEmail] = useState;
 }
-
-export default Singup;
