@@ -1,20 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Quiz from '../Quiz';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../theme';
 import Home from '../pages/Home';
 import Login from '../components/LoginPage/Login.jsx';
 import Signup from '../components/LoginPage/Signup';
-import GlobalStyle from '../GlobalStyle';
-import { ThemeProvider } from 'styled-components';
-import Layout from '../components/Layout/Layout';
-import { theme } from '../theme';
 import Result from '../pages/Result';
+import Quiz from '../Quiz';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        {/* <GlobalStyle> */}
-        {/* <Layout> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -22,8 +19,6 @@ const Router = () => {
           <Route path="/survey/result" element={<Result />} />
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
-        {/* </Layout> */}
-        {/* </GlobalStyle> */}
       </ThemeProvider>
     </BrowserRouter>
   );

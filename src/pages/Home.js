@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import background from '../assets/background.png';
 
 function Home() {
@@ -13,7 +12,7 @@ function Home() {
         <ContentContainer>
           <Heading>호그와트 기숙사 테스트</Heading>
           <Paragraph>꿀잼보장 38000%</Paragraph>
-          <Link to={'/quiz'}>설문시작!</Link>
+          <Button href="/quiz">설문시작!</Button>
         </ContentContainer>
       </BodyContainer>
       <Footer />
@@ -55,7 +54,7 @@ const Paragraph = styled.p`
   font-size: 24px;
 `;
 
-const Button = styled.button`
+const Button = styled.a`
   padding: 12px 24px;
   font-size: 20px;
   border: none;
