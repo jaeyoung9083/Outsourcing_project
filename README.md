@@ -1,20 +1,21 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🪄PetoPia🧙‍♂️&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🧙호그와트 기숙사 배정🧙‍♂️&fontSize=90" />
 
-:magic_wand: :male_mage:
+ :male_mage:
 ## 프로젝트 소개
 
-여러 애완 동물들의 사육정보 및 자기 동물 소개 해주는 소통 및 정보 공유 사이트입니다.
-Firebase를 활용해서 DB를 관리해주고 리덕스로 해당 정보 제어를 해줬습니다.
+해당 질문에 답을 하여서 성향에 맞는 해리포터 총 4개의 기숙사 중 
+하나에 배정할 수 있는 간단한 테스트를 할 수 있는 사이트입니다. 
 
-**연결 링크**: https://teamojijo-pettopia-fid.site/
+**연결 링크**: __
 
-![20230703_104458](https://github.com/Hediar/PetoPia/assets/72387948/7e60c30d-5b19-42c7-837b-f3cce1e50749)
+![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/2ef91f24-e903-4908-ac72-fe98ce133f23)
+
 
 ### :boxing_glove: 개발기간
 
-**(23.06.26~23.07.03)**
+**(23.07.17~23.07.21)**
 
-## :sunflower: Stacks
+## :magic_wand: Stacks
 
 ### Environment
 
