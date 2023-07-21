@@ -8,7 +8,7 @@ import Signup from '../components/LoginPage/Signup';
 import Comments from '../pages/Comments';
 import Result from '../pages/Result';
 import BackgroundMusic from '../components/Layout/BackgroundMusic';
-import Quiz from '../components/Quiz';
+import Quiz from '../pages/Quiz';
 import Layout from '../components/Layout/Layout';
 
 const Router = () => {

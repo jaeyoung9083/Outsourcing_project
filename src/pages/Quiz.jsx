@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import getGoogleSheet from '../getGoogleSheet';
 import styled from 'styled-components';
 import { Box, CircularProgress } from '@mui/material';
-import Result from '../pages/Result';
+import Result from './Result';
 
 const Quiz = () => {
   const [questionIndex, setQuestionIndex] = useState(0); // 질문 인덱스 상태 추가

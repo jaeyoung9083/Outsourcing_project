@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import background from '../assets/background.png';
 import { nanoid } from '@reduxjs/toolkit';
-import Header from '../components/Layout/Header';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getComments, addComment, deleteComment, editComment } from '../api/comments';
 
@@ -40,11 +39,22 @@ const Comments = () => {
       alert('작성자와 댓글을 모두 입력해주세요');
       return;
     }
+    // 작성일시 가자오기
+    const now = new Date();
+    const date = now.toLocaleDateString('ko-KR');
+    const time = now.toLocaleString('ko-KR', {
+      timeZone: 'Asia/Seoul',
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    // 새로운 댓글 객체 생성
     const newComment = {
       id: nanoid(),
       name,
       content,
-      date: new Date().toLocaleDateString('ko-KR')
+      date,
+      time
     };
     addMutation.mutate(newComment);
     // 입력 필드 초기화
@@ -102,7 +112,9 @@ const Comments = () => {
           {comments?.map((comment) => (
             <Comment key={comment.id}>
               <Content>작성자: {comment.name}</Content>
-              <Content>작성일 : {comment.date}</Content>
+              <Content>
+                작성일시 : {comment.date} {comment.time}
+              </Content>
               {comment.id === editId ? (
                 <Content>
                   <span>내용: </span>
