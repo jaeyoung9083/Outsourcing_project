@@ -14,7 +14,7 @@
 
 **(23.07.17~23.07.21)**
 
-## :magic_wand: Stacks
+## :paperclip: Stacks
 
 ### Environment
 
