@@ -7,14 +7,15 @@ import Login from '../components/LoginPage/Login.jsx';
 import Signup from '../components/LoginPage/Signup';
 import Comments from '../pages/Comments';
 import Result from '../pages/Result';
-import BackgroundMusic from '../components/Layout/BackgroundMusic';
-import Quiz from '../components/Quiz';
+import Quiz from '../pages/Quiz';
 import Layout from '../components/Layout/Layout';
+import BackgroundMusic from '../components/Layout/BackgroundMusic';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
+        {/* BackgroundMusic 컴포넌트를 Routes 컴포넌트 밖으로 이동 */}
         <BackgroundMusic />
         <Routes>
           <Route element={<Layout />}>

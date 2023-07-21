@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { addCurrentUser } from '../../redux/modules/loginSlice'; // 리덕스 슬라이스 파일 경로를 수정
+import styled from 'styled-components';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -46,12 +47,12 @@ function Login() {
   //   }
   // }, [user, navigate]);
   return (
-    <div>
-      <form>
+    <LoginContainer>
+      <LoginForm>
         <span>로그인</span>
         <div>
-          <label>이메일 : </label>
-          <input
+          <StyledLabel>이메일 :</StyledLabel>
+          <StyledInput
             type="email"
             placeholder="이메일을 입력해주세요"
             value={email}
@@ -62,10 +63,10 @@ function Login() {
           />
         </div>
         <div>
-          <label>비밀번호 : </label>
-          <input
+          <StyledLabel>비밀번호 :</StyledLabel>
+          <StyledInput
             type="password"
-            placeholder="비밀전호를 입력해주세요"
+            placeholder="비밀번호를 입력해주세요"
             value={password}
             name="password"
             onChange={(e) => {
@@ -73,18 +74,66 @@ function Login() {
             }}
           />
         </div>
-        <button onClick={signInFunc}>로그인</button>
-        <p>회원가입 하로 가기</p>
-        <button
+        <StyledButton onClick={signInFunc}>로그인</StyledButton>
+        <StyledLink
           onClick={(e) => {
             e.preventDefault();
             navigate('/signup');
           }}
         >
-          회원가입
-        </button>
-      </form>
-    </div>
+          회원가입 하로 가기
+        </StyledLink>
+      </LoginForm>
+    </LoginContainer>
   );
-}
+};
+
 export default Login;
+
+// Define your styled-components
+const LoginContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const LoginForm = styled.form`
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+`;
+
+const StyledLabel = styled.label`
+  font-weight: bold;
+`;
+
+const StyledInput = styled.input`
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 250px;
+`;
+
+const StyledButton = styled.button`
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+const StyledLink = styled.p`
+  margin-top: 10px;
+  cursor: pointer;
+  color: #007bff;
+`;

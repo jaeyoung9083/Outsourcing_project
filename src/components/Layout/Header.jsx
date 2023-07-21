@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
+
 const Header = () => {
   return (
     <HeaderWrapper>
+
       <Nav>
         <Link to="/">
           <Logo src={logo} />
         </Link>
+
         <div>
           <NavLink href="/login">Login</NavLink>
           <NavLink href="/signup">Signup</NavLink>

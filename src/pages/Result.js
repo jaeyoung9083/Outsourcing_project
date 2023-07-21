@@ -98,6 +98,10 @@ export default Result;
 const ResultContainer = styled.div`
   max-width: 800px;
   margin: auto;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a box shadow for a subtle effect */
 `;
 
 const MainTitle = styled.div`
@@ -118,6 +122,10 @@ const ResultBox = styled.div`
 const Logo = styled.img`
   width: 180px;
   height: 180px;
+  border: 4px solid #ccc; /* Adding a border with a light gray color */
+  border-radius: 10px; /* Rounded corners for the frame effect */
+  padding: 10px; /* Adding some padding around the image */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow for depth */
 `;
 
 const Graph = styled.div`
@@ -138,6 +146,7 @@ const ContentTitle = styled.div`
 
 const AccordionWrapper = styled.div`
   width: 100%;
+  background-color: #c3d9cf;
 `;
 
 const Section = styled.div`
