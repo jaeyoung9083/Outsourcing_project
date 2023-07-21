@@ -16,7 +16,7 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/survey/result" element={<Result />} />
+          <Route path="/result" element={<Result />} />
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </ThemeProvider>
