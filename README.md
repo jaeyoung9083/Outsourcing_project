@@ -1,6 +1,6 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🧙‍♂️Harry_Potter🧙‍♂️&fontSize=90" />
 
- :male_mage:
+
 ## 프로젝트 소개
 
 해당 질문에 답을 하여서 성향에 맞는 해리포터 총 4개의 기숙사 중 
@@ -25,15 +25,16 @@
 
 ### Development
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white"/> <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white"/> 
 
 <br/><br/>
 
 ## 화면 구성
 
-|                                             메인페이지                                              |                                            피드 페이지                                            |
+|                                             메인페이지                                              |                                            질문 페이지                                            |
 | :-------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
-|  ![image](https://github.com/Hediar/PetoPia/assets/69897998/c0944829-26b0-4eb2-8374-d547d0ad0cac)   | ![image](https://github.com/Hediar/PetoPia/assets/69897998/9328e4d0-81bb-4bf2-bb9a-182541288882)  |
+|  ![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/c23e60c1-eca0-483e-bb0f-ee33d415761b)
+   | ![image](https://github.com/Hediar/PetoPia/assets/69897998/9328e4d0-81bb-4bf2-bb9a-182541288882)  |
 |                                                                                                     |
 |                                             마이페이지                                              |                                         동물 상세 페이지                                          |
 |  ![image](https://github.com/Hediar/PetoPia/assets/69897998/4832375b-5365-451a-9351-84cd80f92acd)   | ![image](https://github.com/Hediar/PetoPia/assets/69897998/bb011c35-761e-4a40-921a-5688216152c1)  |
