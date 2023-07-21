@@ -3,6 +3,7 @@ import getGoogleSheet from './getGoogleSheet';
 import Header from './pages/Header';
 import styled from 'styled-components';
 import { Box, CircularProgress } from '@mui/material';
+import Result from './pages/Result';
 
 const Quiz = () => {
   const [questionIndex, setQuestionIndex] = useState(0); // 질문 인덱스 상태 추가
@@ -58,47 +59,14 @@ const Quiz = () => {
       return updatedResult;
     });
   };
-  const whoAmI = () => {
-    const arr = result; // 주어진 배열
-    console.log('result->' + arr);
-
-    const max = Math.max(...arr); // 배열에서 가장 큰 값 찾기
-
-    // 배열 중 가장 큰 투표 받은 반의 인덱스 추출
-    const index = arr.indexOf(max);
-
-    console.log('max->' + max);
-    const duplicates = arr.filter((num, index) => {
-      if (num === max) {
-        return index;
-      }
-    }); // 가장 큰 값과 일치하는 원소들 찾기
-
-    // duplicates.length === 1 ? console.log('겹치는게 없다') : console.log('겹치는게 많다');
-    console.log(duplicates); // 겹치는 원소들 출력
-
-    return (
-      <>
-        <Header />
-        <h1>모든 질문이 완료됐습니다!</h1>
-
-        <h2>당신은 {places[arr.indexOf(max)]}에 배정되었습니다!!</h2>
-        <img src={images[index]} alt="기숙사" />
-
-        <h2>&lt;세부정보&gt;</h2>
-        <p>그리핀도르: {(result[0] / 4) * 100 + '%'}</p>
-        <p>후블푸프: {(result[1] / 4) * 100 + '%'}</p>
-        <p>레번클로: {(result[2] / 4) * 100 + '%'}</p>
-        <p>슬리데린: {(result[3] / 4) * 100 + '%'}</p>
-      </>
-    );
-  };
 
   // 질문을 모두 푼 경우
   if (questionIndex === googleSheetRows.length && !loading) {
     return (
       <div>
-        {whoAmI()}
+        {/* 결과 컴포넌트 */}
+        <Result result={result} googleSheetRows={googleSheetRows} places={places} images={images} />
+
         <h2>문제별 선택한 답:</h2>
         {answers.map((answer, index) => (
           <>
@@ -144,16 +112,16 @@ const Quiz = () => {
           return (
             <CardWrapper key={index}>
               <Card>
-              <h1>{index + 1 + '/' + googleSheetRows.length}</h1>
-              <h2>{v.q}</h2>
+                <h1>{index + 1 + '/' + googleSheetRows.length}</h1>
+                <h2>{v.q}</h2>
 
-              {getResult(v.a, v.type).map((answer, answerIndex) => (
-                <React.Fragment key={answerIndex}>
-                  <QuizButton onClick={() => handleNextQuestion(answer.type)}>{answer.answer}</QuizButton>
-                  <span>{answer.type}</span>
-                  <br />
-                </React.Fragment>
-              ))}
+                {getResult(v.a, v.type).map((answer, answerIndex) => (
+                  <React.Fragment key={answerIndex}>
+                    <QuizButton onClick={() => handleNextQuestion(answer.type)}>{answer.answer}</QuizButton>
+                    <span>{answer.type}</span>
+                    <br />
+                  </React.Fragment>
+                ))}
               </Card>
             </CardWrapper>
           );

@@ -1,15 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
 
-function Home() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/quiz');
-  };
 
+function Home() {
   return (
     <div>
       <Header />
@@ -18,7 +14,7 @@ function Home() {
         <ContentContainer>
           <Heading>호그와트 기숙사 테스트</Heading>
           <Paragraph>꿀잼보장 38000%</Paragraph>
-          <Button onClick={handleClick}>설문시작!</Button>
+          <Button href="/quiz">설문시작!</Button>
         </ContentContainer>
       </BodyContainer>
 
@@ -61,7 +57,7 @@ const Paragraph = styled.p`
   font-size: 24px;
 `;
 
-const Button = styled.button`
+const Button = styled.a`
   padding: 12px 24px;
   font-size: 20px;
   border: none;

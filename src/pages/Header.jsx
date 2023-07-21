@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Header = () => {
@@ -43,3 +42,4 @@ const NavLink = styled.a`
     text-decoration: underline;
   }
 `;
+
