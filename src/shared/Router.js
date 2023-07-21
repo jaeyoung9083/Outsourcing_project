@@ -5,7 +5,7 @@ import { theme } from '../theme';
 import Home from '../pages/Home';
 import Login from '../components/LoginPage/Login.jsx';
 import Signup from '../components/LoginPage/Signup';
-import Result from '../pages/Result';
+import Comments from '../pages/Comments';
 import Quiz from '../Quiz';
 
 const Router = () => {
@@ -16,7 +16,7 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/result" element={<Result />} />
+          <Route path="/comments" element={<Comments />} />
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </ThemeProvider>
