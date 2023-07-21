@@ -3,7 +3,7 @@ import Video from '../components/ResultPage/Video';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const Result = ({ result, googleSheetRows, places, images }) => {
+const Result = ({ result, googleSheetRows, places, images, pickedSheetRows }) => {
   const resultArr = result; // 주어진 배열
 
   const max = Math.max(...resultArr); // 배열에서 가장 큰 값 찾기
@@ -22,7 +22,7 @@ const Result = ({ result, googleSheetRows, places, images }) => {
 
   // duplicates.length === 1 ? console.log('겹치는게 없다') : console.log('겹치는게 많다');
   console.log(duplicates); // 겹치는 원소들 출력
-  const quizLength = googleSheetRows.length;
+  const quizLength = pickedSheetRows.length;
   const yourClass = places[resultArr.indexOf(max)];
 
   const [openSection, setOpenSection] = useState(null);
@@ -98,6 +98,10 @@ export default Result;
 const ResultContainer = styled.div`
   max-width: 800px;
   margin: auto;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding a box shadow for a subtle effect */
 `;
 
 const MainTitle = styled.div`
@@ -118,6 +122,10 @@ const ResultBox = styled.div`
 const Logo = styled.img`
   width: 180px;
   height: 180px;
+  border: 4px solid #ccc; /* Adding a border with a light gray color */
+  border-radius: 10px; /* Rounded corners for the frame effect */
+  padding: 10px; /* Adding some padding around the image */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow for depth */
 `;
 
 const Graph = styled.div`
@@ -138,6 +146,7 @@ const ContentTitle = styled.div`
 
 const AccordionWrapper = styled.div`
   width: 100%;
+  background-color: #c3d9cf;
 `;
 
 const Section = styled.div`

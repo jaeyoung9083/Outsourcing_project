@@ -15,6 +15,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
+        {/* BackgroundMusic 컴포넌트를 Routes 컴포넌트 밖으로 이동 */}
         <BackgroundMusic />
         <Routes>
           <Route element={<Layout />}>

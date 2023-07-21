@@ -25,10 +25,27 @@ const BodyContainer = styled.div`
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;
-  height: 100vh; /* Adjust this as needed to fit your content */
+  height: 100vh;
+  /* Adjust this as needed to fit your content */
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  
+    animation: blink 5s infinite;
+
 `;
 
 // Create a styled component for the container div

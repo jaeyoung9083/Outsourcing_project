@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -33,17 +34,69 @@ const Signup = () => {
     }
   };
   return (
-    <>
-      <div>
-        <h2>회원가입</h2>
-        <label>이메일 : </label>
-        <input type="email" placeholder="이메일을 입력해주세요" value={email} onChange={onChangeEmail} />
-        <label>비밀번호 : </label>
-        <input type="password" placeholder="비밀번호를 입력해주세요" value={password} onChange={onChangePassword} />
-        <button onClick={signupButton}>회원가입</button>
-      </div>
-    </>
+    <SignupContainer>
+    <h2>회원가입</h2>
+    <SignupForm>
+      <StyledLabel>이메일 :</StyledLabel>
+      <StyledInput
+        type="email"
+        placeholder="이메일을 입력해주세요"
+        value={email}
+        onChange={onChangeEmail}
+      />
+      <StyledLabel>비밀번호 :</StyledLabel>
+      <StyledInput
+        type="password"
+        placeholder="비밀번호를 입력해주세요"
+        value={password}
+        onChange={onChangePassword}
+      />
+      <StyledButton onClick={signupButton}>회원가입</StyledButton>
+    </SignupForm>
+  </SignupContainer>
   );
 };
 
 export default Signup;
+
+const SignupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+`;
+
+const SignupForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+`;
+
+const StyledLabel = styled.label`
+  font-weight: bold;
+`;
+
+const StyledInput = styled.input`
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 250px;
+`;
+
+const StyledButton = styled.button`
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
