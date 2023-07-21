@@ -31,17 +31,17 @@
 
 ## 화면 구성
 
-|                                             메인페이지                                              |                                            질문 페이지                                            |
-| :-------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: |
-|  ![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/c23e60c1-eca0-483e-bb0f-ee33d415761b)
-   | ![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/a4452769-1fd1-46cf-939f-7f5c4edae776)
-  |
-|                                                                                                     |
-|                                             마이페이지                                              |                                         동물 상세 페이지                                          |
-|  ![image](https://github.com/Hediar/PetoPia/assets/69897998/4832375b-5365-451a-9351-84cd80f92acd)   | ![image](https://github.com/Hediar/PetoPia/assets/69897998/bb011c35-761e-4a40-921a-5688216152c1)  |
-|                                                                                                     |
-|                                           회원가입 페이지                                           |                                           로그인 페이지                                           |
-| ![회원가입](https://github.com/Hediar/PetoPia/assets/72387948/bd21fb18-611b-4319-9bed-a5154bdf84b5) | ![로그인](https://github.com/Hediar/PetoPia/assets/72387948/199a865f-9062-4edc-b48d-be855f9d2886) |
+## Main Page
+
+![Main Page](https://github.com/jaeyoung9083/Outsourcing_project/blob/master/assets/69897998/c23e60c1-eca0-483e-bb0f-ee33d415761b.png)
+
+Description and details about the main page go here...
+
+## Question Page
+
+![Question Page](https://github.com/jaeyoung9083/Outsourcing_project/blob/master/assets/69897998/a4452769-1fd1-46cf-939f-7f5c4edae776.png)
+
+Description and details about the question page go here...
 
 ---
 
