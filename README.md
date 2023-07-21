@@ -33,14 +33,15 @@
 
 ## Main Page
 
-![Main Page](https://github.com/jaeyoung9083/Outsourcing_project/blob/master/assets/69897998/c23e60c1-eca0-483e-bb0f-ee33d415761b.png)
+![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/cdd80444-92d5-46b6-9ae8-65f293acce8b)
+
 
 Description and details about the main page go here...
 
 ## Question Page
 
-![Question Page](![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/eec77011-a871-4b81-a1ac-fcc1a46deb21)
-)
+![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/eec77011-a871-4b81-a1ac-fcc1a46deb21)
+
 
 Description and details about the question page go here...
 
