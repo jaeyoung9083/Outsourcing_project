@@ -1,14 +1,17 @@
 import styled from 'styled-components';
+import logo from '../../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <HeaderWrapper>
       <Nav>
-        <Logo>My Website</Logo>
+        <Link to="/">
+          <Logo src={logo} />
+        </Link>
         <div>
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/contact">Contact</NavLink>
+          <NavLink href="/login">Login</NavLink>
+          <NavLink href="/signup">Signup</NavLink>
         </div>
       </Nav>
     </HeaderWrapper>
@@ -16,6 +19,11 @@ const Header = () => {
 };
 
 export default Header;
+
+const Logo = styled.img`
+  width: 150px;
+  padding-left: 20px;
+`;
 
 const HeaderWrapper = styled.header`
   background-color: #333;
@@ -29,17 +37,14 @@ const Nav = styled.nav`
   align-items: center;
 `;
 
-const Logo = styled.h1`
-  font-size: 24px;
-`;
-
 const NavLink = styled.a`
   color: #fff;
-  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 0 20px 0 20px;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
 `;
-

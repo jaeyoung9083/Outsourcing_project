@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Video from '../components/ResultPage/Video';
-// import Comment from '../components/ResultPage/Comment';
-import Comments from '../components/ResultPage/Comments';
-import Header from './Header';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Result = ({ result, googleSheetRows, places, images, pickedSheetRows }) => {
   const resultArr = result; // 주어진 배열
@@ -49,43 +47,94 @@ const Result = ({ result, googleSheetRows, places, images, pickedSheetRows }) =>
     return sections;
   };
 
+  // 댓글 페이지로 이동
+  const navigate = useNavigate();
+  const nanigation = () => {
+    navigate('/comments');
+  };
+
   return (
-    <div>
-      <h2>기숙사 배정 결과</h2>
-      <Header />
-      <h1>모든 질문이 완료됐습니다!</h1>
-
-      <h2>당신은 {yourClass}에 배정되었습니다!!</h2>
-      <img src={images[index]} alt="기숙사" />
-
-      {/* 기숙사별 소속율 */}
-      <h2>&lt;세부정보&gt;</h2>
-      {result.map((picked, i) => (
-        <p key={i}>
-          {places[i]}: {Math.round((picked / quizLength) * 100) + '%'}
-        </p>
-      ))}
-      <h2>&lt;About {yourClass}&gt;</h2>
-      <AccordionWrapper>
-        {setAccordion().map((section, index) => (
-          <Section key={index} onClick={() => toggleSection(index)}>
-            {'정보 ' + (index + 1)}
-            <Content isOpen={openSection === index}>{section}</Content>
-          </Section>
-        ))}
-      </AccordionWrapper>
-
-      {/* 해리포터 기숙사 관련 Youtube 영상 */}
-      <Video />
-      {/* 댓글창 */}
-      <h2>댓글창</h2>
-      {/* <Comment /> */}
-      <Comments />
-    </div>
+    <>
+      <ResultContainer>
+        {/* 기숙사 결과 */}
+        <MainTitle>당신은 {yourClass}에 배정되었습니다.</MainTitle>
+        <ResultBox>
+          <Logo src={images[index]} alt="기숙사" />
+          {/* 기숙사별 소속율 */}
+          <Graph>
+            {result.map((picked, i) => (
+              <p key={i}>
+                {places[i]}: {Math.round((picked / quizLength) * 100) + '%'}
+              </p>
+            ))}
+          </Graph>
+        </ResultBox>
+        <ResultBox>
+          <StButton>공유하기</StButton>
+          <StButton onClick={nanigation}>이야기 나누기</StButton>
+        </ResultBox>
+        {/* 기숙사 알아보기 */}
+        <div>
+          <ContentTitle>{yourClass}에 대해 알아보기 </ContentTitle>
+          <AccordionWrapper>
+            {setAccordion().map((section, index) => (
+              <Section key={index} onClick={() => toggleSection(index)}>
+                {'정보 ' + (index + 1)}
+                <Content isOpen={openSection === index}>{section}</Content>
+              </Section>
+            ))}
+          </AccordionWrapper>
+        </div>
+        {/* 해리포터 기숙사 관련 Youtube 영상 */}
+        <ContentTitle>해리포터 기숙사 배정 알아보기</ContentTitle>
+        <Video />
+      </ResultContainer>
+    </>
   );
 };
 
 export default Result;
+
+const ResultContainer = styled.div`
+  max-width: 800px;
+  margin: auto;
+`;
+
+const MainTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  font-size: 30px;
+  font-weight: bolder;
+`;
+
+const ResultBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 50px;
+`;
+
+const Logo = styled.img`
+  width: 180px;
+  height: 180px;
+`;
+
+const Graph = styled.div`
+  margin-left: 50px;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const ContentTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 20px 0 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+`;
 
 const AccordionWrapper = styled.div`
   width: 100%;
@@ -102,4 +151,17 @@ const Section = styled.div`
 const Content = styled.div`
   padding: 10px;
   display: ${(props) => (props.isOpen ? 'block' : 'none')};
+`;
+
+const StButton = styled.button`
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: bolder;
+  color: white;
+  background-color: #202763;
+  border: none;
+  border-radius: 20px;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
 `;
