@@ -1,5 +1,6 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=😺:magic_wand::male_mage:PetoPia😺&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text= 🪄 PetoPia 🧙‍♂️&fontSize=90" />
 
+:magic_wand: :male_mage:
 ## 프로젝트 소개
 
 여러 애완 동물들의 사육정보 및 자기 동물 소개 해주는 소통 및 정보 공유 사이트입니다.
