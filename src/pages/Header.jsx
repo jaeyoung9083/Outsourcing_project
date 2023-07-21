@@ -46,4 +46,3 @@ const NavLink = styled.a`
     text-decoration: underline;
   }
 `;
-

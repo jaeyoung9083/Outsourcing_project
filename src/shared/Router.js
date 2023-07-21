@@ -6,12 +6,14 @@ import Home from '../pages/Home';
 import Login from '../components/LoginPage/Login.jsx';
 import Signup from '../components/LoginPage/Signup';
 import Result from '../pages/Result';
+import BackgroundMusic from '../components/Layout/BackgroundMusic';
 import Quiz from '../Quiz';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
+        <BackgroundMusic />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
