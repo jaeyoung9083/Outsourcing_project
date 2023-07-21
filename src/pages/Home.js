@@ -1,13 +1,10 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
 import styled from 'styled-components';
 import background from '../assets/background.png';
 
 function Home() {
   return (
     <div>
-      <Header />
       <BodyContainer>
         <ContentContainer>
           <Heading>호그와트 기숙사 테스트</Heading>
@@ -15,7 +12,6 @@ function Home() {
           <Button href="/quiz">설문시작!</Button>
         </ContentContainer>
       </BodyContainer>
-      <Footer />
     </div>
   );
 }

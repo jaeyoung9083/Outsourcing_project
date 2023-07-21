@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import getGoogleSheet from './getGoogleSheet';
-import Header from './pages/Header';
+import getGoogleSheet from '../getGoogleSheet';
 import styled from 'styled-components';
 import { Box, CircularProgress } from '@mui/material';
-import Result from './pages/Result';
+import Result from '../pages/Result';
 
 const Quiz = () => {
   const [questionIndex, setQuestionIndex] = useState(0); // 질문 인덱스 상태 추가
@@ -122,7 +121,6 @@ const Quiz = () => {
 
   return (
     <div>
-      <Header />
       {/* 숫자를 입력하는 입력란 */}
       {!loading && (
         <>
