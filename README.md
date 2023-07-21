@@ -6,7 +6,6 @@
 해당 질문에 답을 하여서 성향에 맞는 해리포터 총 4개의 기숙사 중 
 하나에 배정할 수 있는 간단한 테스트를 할 수 있는 사이트입니다. 
 
-**연결 링크**: __
 
 ![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/2ef91f24-e903-4908-ac72-fe98ce133f23)
 
