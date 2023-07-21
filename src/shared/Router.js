@@ -7,9 +7,9 @@ import Login from '../components/LoginPage/Login.jsx';
 import Signup from '../components/LoginPage/Signup';
 import Comments from '../pages/Comments';
 import Result from '../pages/Result';
+import BackgroundMusic from '../components/Layout/BackgroundMusic';
 import Quiz from '../pages/Quiz';
 import Layout from '../components/Layout/Layout';
-import BackgroundMusic from '../components/Layout/BackgroundMusic';
 
 const Router = () => {
   return (
