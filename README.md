@@ -47,7 +47,7 @@ __
 ![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/eec77011-a871-4b81-a1ac-fcc1a46deb21)
 
 
-__
+
 
 ---
 
@@ -58,7 +58,7 @@ __
 #### Google Spread Sheet DB가져오기
 
 - 질문, 답, 기숙사 정보, 문제에 대한 답 등에 대한 정보를 가져옵니다.
-- __
+
 
 ### 결과 페이지
 
