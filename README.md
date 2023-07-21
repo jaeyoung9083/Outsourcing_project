@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text= 👨‍🦲 PetoPia 🧙‍♂️&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=👨‍🦲PetoPia🧙‍♂️&fontSize=90" />
 
 :magic_wand: :male_mage:
 ## 프로젝트 소개
