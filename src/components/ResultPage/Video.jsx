@@ -34,7 +34,7 @@ function Video() {
   return (
     <div
       style={{
-        width: '800px',
+        width: '100%',
         overflowX: 'auto', // 가로 스크롤바 생성을 위한 설정
         display: 'flex',
         gap: '10px',
