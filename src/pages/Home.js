@@ -3,12 +3,10 @@ import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import BackgroundMusic from '../components/BackgroundMusic';
 
 function Home() {
   return (
     <div>
-      <BackgroundMusic />
       <Header />
       <BodyContainer>
         <ContentContainer>

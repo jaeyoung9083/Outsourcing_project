@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import BackgroundMusic from '../components/Layout/BackgroundMusic';
 
 const Header = () => {
   return (

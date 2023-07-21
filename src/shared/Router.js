@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import Layout from '../components/Layout/Layout';
 import { theme } from '../theme';
 import Result from '../pages/Result';
+import BackgroundMusic from '../components/Layout/BackgroundMusic';
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
       <ThemeProvider theme={theme}>
         {/* <GlobalStyle> */}
         {/* <Layout> */}
+        <BackgroundMusic />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
