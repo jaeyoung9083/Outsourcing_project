@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Video from '../components/ResultPage/Video';
-import Header from './Header';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -56,7 +55,6 @@ const Result = ({ result, googleSheetRows, places, images }) => {
 
   return (
     <>
-      <Header />
       <ResultContainer>
         {/* 기숙사 결과 */}
         <MainTitle>당신은 {yourClass}에 배정되었습니다.</MainTitle>

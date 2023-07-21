@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -39,11 +39,12 @@ const Nav = styled.nav`
 
 const NavLink = styled.a`
   color: #fff;
-  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 0 20px 0 20px;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
 `;
-

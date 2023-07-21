@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import background from '../assets/background.png';
 import { nanoid } from '@reduxjs/toolkit';
-import Header from './Header';
+import Header from '../components/Layout/Header';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getComments, addComment, deleteComment, editComment } from '../api/comments';
 
@@ -85,21 +85,20 @@ const Comments = () => {
 
   return (
     <>
-      <Header />
       <CommentContainer>
         <MainTitle>당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
+        <InputBox>
+          <Input>
+            작성자 : <input value={name} onChange={onChangeName} style={{ height: '20px' }} />
+          </Input>
+          <Input>
+            댓글 : <input value={content} onChange={onChangeContent} style={{ height: '20px' }} />
+          </Input>
+          <StButton style={{ width: '100px' }} onClick={addButton}>
+            댓글 추가
+          </StButton>
+        </InputBox>
         <CommentBox>
-          <InputBox>
-            <Input>
-              작성자 : <input value={name} onChange={onChangeName} />
-            </Input>
-            <Input>
-              댓글 : <input value={content} onChange={onChangeContent} />
-            </Input>
-            <StButton style={{ width: '100px' }} onClick={addButton}>
-              댓글 추가
-            </StButton>
-          </InputBox>
           {comments?.map((comment) => (
             <Comment key={comment.id}>
               <Content>작성자: {comment.name}</Content>
@@ -144,7 +143,9 @@ const MainTitle = styled.div`
 `;
 
 const CommentBox = styled.div`
+  overflow-y: auto;
   max-width: 700px;
+  max-height: 700px;
   margin: auto;
 `;
 
@@ -157,7 +158,7 @@ const InputBox = styled.div`
 `;
 
 const Input = styled.div`
-  margin: 10px;
+  margin: 15px;
   font-size: 18px;
   color: #fff;
 `;
