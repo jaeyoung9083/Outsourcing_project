@@ -85,9 +85,6 @@ const Quiz = () => {
       return updatedResult;
     });
   };
-  useEffect(() => {
-    console.log(pickedSheetRows);
-  }, [pickedSheetRows]);
 
   // 질문을 모두 푼 경우
   if (pickedSheetRows.length !== 0 && questionIndex >= pickedSheetRows.length && !loading) {
@@ -102,9 +99,10 @@ const Quiz = () => {
   const handleNumberChange = (event) => {
     const newNumber = parseInt(event.target.value, 10);
     setNumber(newNumber);
-    getQuestionsByNumber(newNumber);
   };
-
+  const handleApplyButtonClick = () => {
+    getQuestionsByNumber(number);
+  };
   const getResult = (v1, v2) => {
     // 정규 표현식
     const result1 = v1.split(/\s*,\s*/);
@@ -131,14 +129,17 @@ const Quiz = () => {
           <Container>
             <Card>
               <CardTitle>최소 3이상 {totalQuizs}만큼 조정해주세요</CardTitle>
-              <input
-                min="3"
-                max={totalQuizs}
-                type="number"
-                value={number}
-                onChange={handleNumberChange}
-                placeholder="퀴즈 개수를 입력하세요."
-              />
+              <InputWrapper>
+                <StyledInput
+                  min="3"
+                  max={totalQuizs}
+                  type="number"
+                  value={number}
+                  onChange={handleNumberChange}
+                  placeholder="퀴즈 개수를 입력하세요."
+                />
+                <InputButton onClick={handleApplyButtonClick}>적용</InputButton>
+              </InputWrapper>
             </Card>
           </Container>
         </>
@@ -152,6 +153,7 @@ const Quiz = () => {
           </Box>
         </BodyContainer>
       )}
+      {/* 문제를 생성합니다 */}
       {pickedSheetRows.map((v, index) => {
         if (index === questionIndex) {
           return (
@@ -251,4 +253,36 @@ const Card = styled.div`
 const CardTitle = styled.h2`
   margin-bottom: 10px;
   text-align: center;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 5px;
+`;
+
+const StyledInput = styled.input`
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+`;
+
+const InputButton = styled.button`
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #45a049;
+  }
 `;
