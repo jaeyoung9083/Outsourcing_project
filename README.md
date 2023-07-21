@@ -36,69 +36,58 @@
 ![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/cdd80444-92d5-46b6-9ae8-65f293acce8b)
 
 
-Description and details about the main page go here...
+__
 
 ## Question Page
 
 ![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/eec77011-a871-4b81-a1ac-fcc1a46deb21)
 
 
-Description and details about the question page go here...
+__
 
 ---
 
 ## :partying_face: 주요 기능
 
-### 메인페이지
+### 퀴즈 페이지
 
-#### Firestore에서 DB가져오기
+#### Google Spread Sheet DB가져오기
 
-- 회원가입 한 유저의 글 (Fid)을 가져오고, 이 피드정보를 하나의 리스트로 불러와서 보여줍니다.
-- 현재 웹 페이지의 사이즈에 맞춰 피드의 사이즈가 조절이 됩니다.
+- 질문, 답, 기숙사 정보, 문제에 대한 답 등에 대한 정보를 가져옵니다.
+- __
 
-### 회원 가입 페이지
+### 결과 페이지
 
-- 신규 가입은 E-mail을 이용하여 회원 등록이 가능하게 구성하였습니다.
-- E-mail과 비밀번호 입력시 하단의 Error Message를 통해 Validation Check를 하였습니다.
-- 회원 로그인 & 로그아웃이 가능하며 상태 변경시 알림을 Alert 창으로 띄워줍니다.
-- 상단의 Logo와 버튼을 통해 클릭하면 언제든 Home으로 돌아갈 수 있습니다.
+- 해당 기숙사 관련된 답을 많이 고르면 그 쪽 기숙사로 배정됩니다.
+- 상세 정보를 퍼센티지(%)로 확인할 수 있습니다.
+- 기숙사에 대한 여러 특징을 Accordion을 열어 확인 가능합니다.
+- 해리포터 관련된 영상을 Youtube API를 통해 불러와서 시청 가능합니다.
 
-### 게시글 작성 페이지
+### 기숙사에 의견 남기기
+- 배정받은 기숙사에 자신의 의견을 남길 수 있습니다.
 
-- 게시글 작성시 Category를 본인이 설정하여 원하는 이미지와 함께 게시글을 작성할 수 있습니다.
-- 회원가입 시 설정한 Nick Name 과 Category가 피드에 함께 반영됩니다.
+### 로그인/회원가입
 
-### 마이페이지
+- Firebase Authentication으로 만든 계정으로 계정 관리가 가능합니다.
 
-- 해당하는 회원이 작성한 글들만 정리해서 보여줍니다.
-- Profile을 수정하여 저장할 수 있습니다.
+### 미정
 
-### 상세 페이지
+- 미정
 
-- Category 내부 탭에 분류된 각 반려동물의 특징 및 설명 - Animal 클릭시 해당 정보만 보여줍니다.
-- 특징과 설명 아래에는 회원들이 작성한 해당 Category 관련 피드들을 순차적으로 볼 수 있습니다.
+### 미정
 
-### 상세 피드 페이지
-
-- 회원분들이 작성한 게시글을 볼 수 있으며 이는 해당 회원이 아니면 수정과 삭제가 불가합니다.
-- 본인만 글을 삭제, 수정 가능하며 본인이 아니라면 버튼이 보이지 않습니다.
-- 어디서든 Logo를 클릭하면 Home으로 돌아갈 수 있습니다.
+- 미정
 
 ## :sunglasses:주요 파일
 
-#### - firebase.js: firebase 환경 변수 파일
+#### - getGoogleSheet.js: GoogleSpreadsheet 라이브러리를 이용하여 해당 자료를 가져옵니다.
+#### - firebase.js: firebase 환경변수.
+#### - Router.js: 라우터 구성 파일.
+#### - getGoogleSheet.js: GoogleSpreadsheet 라이브러리를 이용하여 해당 자료를 가져옵니다.
+#### - configStore.js, userSlice.js: Redux Tool kit을 사용하여 유저 정보를 어느 파일에서든 가져올 수 있게끔 해줍니다.
+#### - Quiz.jsx: 사용자가 지정한 수의 퀴즈를 생성 후 문제를 풀 수 있습니다.
+#### - Result.jsx: 푼 문제를 받아와서 결과값에 따른 내용 분석을 해줍니다. 
 
-#### - Posting.jsx: 글 작성 관련 페이지
-
-#### - SignupPage.jsx: Firebase Authentication 회원 등록
-
-#### - LoginPage.jsx: Firebase Authentication 로그인
-
-#### - fids.js: Redux로 받아온 firestore db 제어
-
-#### - DetailFeedPage.jsx: 피드 상세정보 페이지
-
-#### - DetailPage.jsx: nav바 동물 메뉴 페이지
 
 <br/><br/>
 
