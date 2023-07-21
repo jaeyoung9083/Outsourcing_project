@@ -1,7 +1,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🧙‍♂️Harry_Potter🧙‍♂️&fontSize=90" />
 
 
-## 프로젝트 소개
+## :magic_wand: 프로젝트 소개
 
 해당 질문에 답을 하여서 성향에 맞는 해리포터 총 4개의 기숙사 중 
 하나에 배정할 수 있는 간단한 테스트를 할 수 있는 사이트입니다. 
