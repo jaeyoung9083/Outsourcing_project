@@ -3,16 +3,21 @@ import getGoogleSheet from './getGoogleSheet';
 import Header from './pages/Header';
 import styled from 'styled-components';
 import { Box, CircularProgress } from '@mui/material';
+import Result from './pages/Result';
 
 const Quiz = () => {
   const [questionIndex, setQuestionIndex] = useState(0); // 질문 인덱스 상태 추가
-  const [answers, setAnswers] = useState([]); // 사용자가 선택한 답변들을 담을 상태 추가
-
   const [googleSheetRows, setGoogleSheetRows] = useState([]);
   const [result, setResult] = useState([0, 0, 0, 0]);
   const [places, setPlaces] = useState([]); // places[0]-[3] : 그-후-레-슬
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState([]); // 기숙사별 이미지
+
+  const [number, setNumber] = useState(3);
+
+  const [pickedSheetRows, setPickedSheetRows] = useState([]);
+
+  const totalQuizs = googleSheetRows.length;
 
   useEffect(() => {
     const fetchGoogleSheetData = async () => {
@@ -27,7 +32,7 @@ const Quiz = () => {
 
         setPlaces(stringToArray(rows[0].class));
         setImages([rows[0].image, rows[1].image, rows[2].image, rows[3].image]);
-        console.log(places);
+
         // 비동기 작업 완료 후 로딩 상태 업데이트
         setLoading(false);
       } catch (error) {
@@ -45,11 +50,33 @@ const Quiz = () => {
     return str.split(/\s*,\s*/);
   }
 
+  const getQuestionsByNumber = (number) => {
+    // googleSheetRows 배열의 길이보다 number가 크거나 같다면, 모든 값을 선택하도록 합니다.
+    if (number >= googleSheetRows.length) {
+      setPickedSheetRows(googleSheetRows);
+    } else {
+      // googleSheetRows 배열의 복사본을 만듭니다.
+      const copy = [...googleSheetRows];
+      // 중복이 없는 랜덤한 순서로 값을 추출하여 pickedSheetRows 배열에 저장합니다.
+      const pickedRows = [];
+      for (let i = 0; i < number; i++) {
+        const randomIndex = Math.floor(Math.random() * copy.length);
+        const pickedRow = copy.splice(randomIndex, 1)[0];
+        pickedRows.push(pickedRow);
+      }
+      setPickedSheetRows(pickedRows);
+    }
+  };
+
+  // useEffect를 사용하여 컴포넌트가 마운트될 때 함수를 호출하도록 합니다.
+  useEffect(() => {
+    getQuestionsByNumber(3); // 예시로 3개의 값을 선택하도록 호출합니다.
+  }, []); // 빈 배열을 전달하여 컴포넌트가 처음 마운트될 때만 호출하도록 합니다.
+
   const handleNextQuestion = (answerType) => {
     // 다음 질문 인덱스로 업데이트
     setQuestionIndex((prevIndex) => prevIndex + 1);
     // 선택한 답변을 answers 배열에 추가
-    setAnswers((prevAnswers) => [...prevAnswers, answerType]);
 
     // 결과 통계를 위해 클릭이 발생하면 해당 자리에 숫자+1
     setResult((prevResult) => {
@@ -58,59 +85,24 @@ const Quiz = () => {
       return updatedResult;
     });
   };
-  const whoAmI = () => {
-    const arr = result; // 주어진 배열
-    console.log('result->' + arr);
-
-    const max = Math.max(...arr); // 배열에서 가장 큰 값 찾기
-
-    // 배열 중 가장 큰 투표 받은 반의 인덱스 추출
-    const index = arr.indexOf(max);
-
-    console.log('max->' + max);
-    const duplicates = arr.filter((num, index) => {
-      if (num === max) {
-        return index;
-      }
-    }); // 가장 큰 값과 일치하는 원소들 찾기
-
-    // duplicates.length === 1 ? console.log('겹치는게 없다') : console.log('겹치는게 많다');
-    console.log(duplicates); // 겹치는 원소들 출력
-
-    return (
-      <>
-        <Header />
-        <h1>모든 질문이 완료됐습니다!</h1>
-
-        <h2>당신은 {places[arr.indexOf(max)]}에 배정되었습니다!!</h2>
-        <img src={images[index]} alt="기숙사" />
-
-        <h2>&lt;세부정보&gt;</h2>
-        <p>그리핀도르: {(result[0] / 4) * 100 + '%'}</p>
-        <p>후블푸프: {(result[1] / 4) * 100 + '%'}</p>
-        <p>레번클로: {(result[2] / 4) * 100 + '%'}</p>
-        <p>슬리데린: {(result[3] / 4) * 100 + '%'}</p>
-      </>
-    );
-  };
 
   // 질문을 모두 푼 경우
-  if (questionIndex === googleSheetRows.length && !loading) {
+  if (pickedSheetRows.length !== 0 && questionIndex >= pickedSheetRows.length && !loading) {
     return (
       <div>
-        {whoAmI()}
-        <h2>문제별 선택한 답:</h2>
-        {answers.map((answer, index) => (
-          <>
-            <h3 key={index}>{`${index + 1}번: ${answer} `}</h3>
-            <br />
-            <></>
-          </>
-        ))}
+        {/* 결과 컴포넌트 */}
+        <Result result={result} googleSheetRows={googleSheetRows} places={places} images={images} />
       </div>
     );
   }
-
+  // 사용자가 숫자를 입력하면 number 상태를 업데이트하고 퀴즈를 새로 생성합니다.
+  const handleNumberChange = (event) => {
+    const newNumber = parseInt(event.target.value, 10);
+    setNumber(newNumber);
+  };
+  const handleApplyButtonClick = () => {
+    getQuestionsByNumber(number);
+  };
   const getResult = (v1, v2) => {
     // 정규 표현식
     const result1 = v1.split(/\s*,\s*/);
@@ -131,6 +123,28 @@ const Quiz = () => {
   return (
     <div>
       <Header />
+      {/* 숫자를 입력하는 입력란 */}
+      {!loading && (
+        <>
+          <Container>
+            <Card>
+              <CardTitle>최소 3이상 {totalQuizs}만큼 조정해주세요</CardTitle>
+              <InputWrapper>
+                <StyledInput
+                  min="3"
+                  max={totalQuizs}
+                  type="number"
+                  value={number}
+                  onChange={handleNumberChange}
+                  placeholder="퀴즈 개수를 입력하세요."
+                />
+                <InputButton onClick={handleApplyButtonClick}>적용</InputButton>
+              </InputWrapper>
+            </Card>
+          </Container>
+        </>
+      )}
+
       {loading && (
         <BodyContainer>
           <Box sx={progressStyle}>
@@ -139,21 +153,22 @@ const Quiz = () => {
           </Box>
         </BodyContainer>
       )}
-      {googleSheetRows.map((v, index) => {
+      {/* 문제를 생성합니다 */}
+      {pickedSheetRows.map((v, index) => {
         if (index === questionIndex) {
           return (
             <CardWrapper key={index}>
               <Card>
-              <h1>{index + 1 + '/' + googleSheetRows.length}</h1>
-              <h2>{v.q}</h2>
+                <h1>{index + 1 + '/' + pickedSheetRows.length}</h1>
+                <h2>{v.q}</h2>
 
-              {getResult(v.a, v.type).map((answer, answerIndex) => (
-                <React.Fragment key={answerIndex}>
-                  <QuizButton onClick={() => handleNextQuestion(answer.type)}>{answer.answer}</QuizButton>
-                  <span>{answer.type}</span>
-                  <br />
-                </React.Fragment>
-              ))}
+                {getResult(v.a, v.type).map((answer, answerIndex) => (
+                  <React.Fragment key={answerIndex}>
+                    <QuizButton onClick={() => handleNextQuestion(answer.type)}>{answer.answer}</QuizButton>
+                    <span>{answer.type}</span>
+                    <br />
+                  </React.Fragment>
+                ))}
               </Card>
             </CardWrapper>
           );
@@ -212,6 +227,18 @@ const CardWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh; /* 높이를 조정하여 카드를 원하는 위치에 맞게 정렬할 수 있습니다. */
+  padding: 50px;
+`;
+
+const Container = styled.div`
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Card = styled.div`
@@ -219,4 +246,43 @@ const Card = styled.div`
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+`;
+
+const CardTitle = styled.h2`
+  margin-bottom: 10px;
+  text-align: center;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 5px;
+`;
+
+const StyledInput = styled.input`
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+`;
+
+const InputButton = styled.button`
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #45a049;
+  }
 `;
