@@ -33,7 +33,7 @@
 #
 <br/><br/>
 
-## 화면 구성
+### :bouncing_ball_man: 화면 구성
 
 ## Main Page
 
