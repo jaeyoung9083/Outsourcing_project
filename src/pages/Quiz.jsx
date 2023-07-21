@@ -87,7 +87,13 @@ const Quiz = () => {
     return (
       <div>
         {/* 결과 컴포넌트 */}
-        <Result result={result} googleSheetRows={googleSheetRows} places={places} images={images} />
+        <Result
+          result={result}
+          googleSheetRows={googleSheetRows}
+          places={places}
+          images={images}
+          pickedSheetRows={pickedSheetRows}
+        />
       </div>
     );
   }
@@ -160,7 +166,7 @@ const Quiz = () => {
                 {getResult(v.a, v.type).map((answer, answerIndex) => (
                   <React.Fragment key={answerIndex}>
                     <QuizButton onClick={() => handleNextQuestion(answer.type)}>{answer.answer}</QuizButton>
-                    <span>{answer.type}</span>
+
                     <br />
                   </React.Fragment>
                 ))}
