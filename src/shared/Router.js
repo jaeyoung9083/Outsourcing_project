@@ -1,21 +1,20 @@
-import Quiz from '../Quiz';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom'; // useHistory로 변경
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../theme';
+import { Routes, Route, BrowserRouter } from 'react-router-dom'; // BrowserRouter를 별도로 import
+
 import Home from '../pages/Home';
 import Login from '../components/LoginPage/Login.jsx';
 import Signup from '../components/LoginPage/Signup';
-import GlobalStyle from '../GlobalStyle';
-import { ThemeProvider } from 'styled-components';
-import Layout from '../components/Layout/Layout';
-import { theme } from '../theme';
 import Result from '../pages/Result';
 import BackgroundMusic from '../components/Layout/BackgroundMusic';
+import Quiz from '../Quiz';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        {/* <GlobalStyle> */}
-        {/* <Layout> */}
         <BackgroundMusic />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,8 +23,6 @@ const Router = () => {
           <Route path="/survey/result" element={<Result />} />
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
-        {/* </Layout> */}
-        {/* </GlobalStyle> */}
       </ThemeProvider>
     </BrowserRouter>
   );
