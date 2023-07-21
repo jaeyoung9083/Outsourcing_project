@@ -39,7 +39,8 @@ Description and details about the main page go here...
 
 ## Question Page
 
-![Question Page](https://github.com/jaeyoung9083/Outsourcing_project/blob/master/assets/69897998/a4452769-1fd1-46cf-939f-7f5c4edae776.png)
+![Question Page](![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/eec77011-a871-4b81-a1ac-fcc1a46deb21)
+)
 
 Description and details about the question page go here...
 
