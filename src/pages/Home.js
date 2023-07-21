@@ -1,15 +1,13 @@
 import React from 'react';
-
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
-
+import background from '../assets/background.png';
 
 function Home() {
   return (
     <div>
       <Header />
-
       <BodyContainer>
         <ContentContainer>
           <Heading>호그와트 기숙사 테스트</Heading>
@@ -17,7 +15,6 @@ function Home() {
           <Button href="/quiz">설문시작!</Button>
         </ContentContainer>
       </BodyContainer>
-
       <Footer />
     </div>
   );
@@ -28,7 +25,7 @@ export default Home;
 const BodyContainer = styled.div`
   margin: 0;
   padding: 0;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hogwarts_model_studio_tour.jpg/250px-Hogwarts_model_studio_tour.jpg');
+  background-image: url(${background});
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;
