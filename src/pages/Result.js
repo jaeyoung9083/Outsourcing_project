@@ -5,7 +5,7 @@ import Comments from '../components/ResultPage/Comments';
 import Header from './Header';
 import styled from 'styled-components';
 
-const Result = ({ result, googleSheetRows, places, images }) => {
+const Result = ({ result, googleSheetRows, places, images, pickedSheetRows }) => {
   const resultArr = result; // 주어진 배열
 
   const max = Math.max(...resultArr); // 배열에서 가장 큰 값 찾기
@@ -24,7 +24,7 @@ const Result = ({ result, googleSheetRows, places, images }) => {
 
   // duplicates.length === 1 ? console.log('겹치는게 없다') : console.log('겹치는게 많다');
   console.log(duplicates); // 겹치는 원소들 출력
-  const quizLength = googleSheetRows.length;
+  const quizLength = pickedSheetRows.length;
   const yourClass = places[resultArr.indexOf(max)];
 
   const [openSection, setOpenSection] = useState(null);

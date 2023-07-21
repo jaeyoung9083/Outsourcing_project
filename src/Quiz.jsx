@@ -91,7 +91,7 @@ const Quiz = () => {
     return (
       <div>
         {/* 결과 컴포넌트 */}
-        <Result result={result} googleSheetRows={googleSheetRows} places={places} images={images} />
+        <Result result={result} googleSheetRows={googleSheetRows} places={places} images={images} pickedSheetRows={pickedSheetRows}/>
       </div>
     );
   }
