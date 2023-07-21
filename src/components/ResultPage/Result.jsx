@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Video from '../components/ResultPage/Video';
+import Video from './Video';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,9 +53,20 @@ const Result = ({ result, googleSheetRows, places, images, pickedSheetRows }) =>
     navigate('/comments');
   };
 
+  // 공유하기
+  const handleShareClick = async () => {
+    // 공유할 url 가져오기
+    const shareURL = 'http://localhost:3000';
+    // 클립보드에 텍스트 복사
+    await navigator.clipboard.writeText(shareURL);
+    // 복사가 성공적으로 이루어진 경우 사용자에게 알림 등을 추가할 수 있습니다.
+    alert('url이 복사되었습니다.');
+  };
+
   return (
     <>
       <ResultContainer>
+        {/* <QuizResult result={result} googleSheetRows={googleSheetRows} places={places} images={images} /> */}
         {/* 기숙사 결과 */}
         <MainTitle>당신은 {yourClass}에 배정되었습니다.</MainTitle>
         <ResultBox>
@@ -70,7 +81,7 @@ const Result = ({ result, googleSheetRows, places, images, pickedSheetRows }) =>
           </Graph>
         </ResultBox>
         <ResultBox>
-          <StButton>공유하기</StButton>
+          <StButton onClick={handleShareClick}>공유하기</StButton>
           <StButton onClick={nanigation}>이야기 나누기</StButton>
         </ResultBox>
         {/* 기숙사 알아보기 */}

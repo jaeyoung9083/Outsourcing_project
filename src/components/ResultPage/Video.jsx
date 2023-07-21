@@ -9,8 +9,8 @@ function Video() {
     const fetchVideos = async () => {
       try {
         const apiKey = 'AIzaSyDjd-3edO32urCc5UVJ9zyADQ9D9g1fON4';
-        const videoIds = '3L2-JAbXIAM,fQNO7YvNCSw,bMYg56tlnao,D6HH_sxSj0M,hFR3uDZnwDY,'; // 여기에 가져오고 싶은 동영상 ID를 입력하세요
-        const maxResults = 5;
+        const videoIds = '3L2-JAbXIAM,d3FXaYrgYdw,fQNO7YvNCSw,ROXDhi2xp_s,yEsXrEZIV-A,F78ggG4vpLQ,bMYg56tlnao';
+        const maxResults = 10;
 
         const response = await axios.get(
           `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoIds}&maxResults=${maxResults}&key=${apiKey}`

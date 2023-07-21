@@ -35,25 +35,20 @@ const Signup = () => {
   };
   return (
     <SignupContainer>
-    <h2>회원가입</h2>
-    <SignupForm>
-      <StyledLabel>이메일 :</StyledLabel>
-      <StyledInput
-        type="email"
-        placeholder="이메일을 입력해주세요"
-        value={email}
-        onChange={onChangeEmail}
-      />
-      <StyledLabel>비밀번호 :</StyledLabel>
-      <StyledInput
-        type="password"
-        placeholder="비밀번호를 입력해주세요"
-        value={password}
-        onChange={onChangePassword}
-      />
-      <StyledButton onClick={signupButton}>회원가입</StyledButton>
-    </SignupForm>
-  </SignupContainer>
+      <h2>회원가입</h2>
+      <SignupForm>
+        <StyledLabel>이메일 :</StyledLabel>
+        <StyledInput type="email" placeholder="이메일을 입력해주세요" value={email} onChange={onChangeEmail} />
+        <StyledLabel>비밀번호 :</StyledLabel>
+        <StyledInput
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+          value={password}
+          onChange={onChangePassword}
+        />
+        <StyledButton onClick={signupButton}>회원가입</StyledButton>
+      </SignupForm>
+    </SignupContainer>
   );
 };
 
@@ -63,7 +58,7 @@ const SignupContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
- 
+  height: 100vh;
 `;
 
 const SignupForm = styled.div`

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import getGoogleSheet from '../getGoogleSheet';
 import styled from 'styled-components';
 import { Box, CircularProgress } from '@mui/material';
-import Result from './Result';
+import Result from '../components/ResultPage/Result';
 
 const Quiz = () => {
   const [questionIndex, setQuestionIndex] = useState(0); // 질문 인덱스 상태 추가
@@ -11,11 +11,8 @@ const Quiz = () => {
   const [places, setPlaces] = useState([]); // places[0]-[3] : 그-후-레-슬
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState([]); // 기숙사별 이미지
-
   const [number, setNumber] = useState(5);
-
   const [pickedSheetRows, setPickedSheetRows] = useState([]);
-
   const totalQuizs = googleSheetRows.length;
 
   useEffect(() => {
@@ -69,7 +66,7 @@ const Quiz = () => {
 
   // useEffect를 사용하여 컴포넌트가 마운트될 때 함수를 호출하도록 합니다.
   useEffect(() => {
-    getQuestionsByNumber(5); // 예시로 3개의 값을 선택하도록 호출합니다.
+    getQuestionsByNumber(5); // 예시로 5개의 값을 선택하도록 호출합니다.
   }, []); // 빈 배열을 전달하여 컴포넌트가 처음 마운트될 때만 호출하도록 합니다.
 
   const handleNextQuestion = (answerType) => {
@@ -169,7 +166,7 @@ const Quiz = () => {
                 {getResult(v.a, v.type).map((answer, answerIndex) => (
                   <React.Fragment key={answerIndex}>
                     <QuizButton onClick={() => handleNextQuestion(answer.type)}>{answer.answer}</QuizButton>
-                    
+
                     <br />
                   </React.Fragment>
                 ))}

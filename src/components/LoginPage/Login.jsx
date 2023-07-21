@@ -86,7 +86,7 @@ function Login() {
       </LoginForm>
     </LoginContainer>
   );
-};
+}
 
 export default Login;
 
