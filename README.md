@@ -7,7 +7,8 @@
 하나에 배정할 수 있는 간단한 테스트를 할 수 있는 사이트입니다. 
 
 
-![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/2ef91f24-e903-4908-ac72-fe98ce133f23)
+![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/8f8e747d-8d04-4daf-9359-33ba8eb87394)
+
 
 
 ### :boxing_glove: 개발기간
