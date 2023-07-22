@@ -38,16 +38,20 @@
 
 ## Main Page
 
-![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/cdd80444-92d5-46b6-9ae8-65f293acce8b)
+![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/9b0baf43-cde6-491c-8cc1-925f7f513a5b)
+
 
 
 
 
 ## Question Page
 
-![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/eec77011-a871-4b81-a1ac-fcc1a46deb21)
+![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/b4220887-d2f7-4bff-ad0b-1bdd9950edf5)
 
 
+## Result Page
+
+![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/d6cd4e26-7b26-4a56-a637-dcba9c4397fd)
 
 
 ---
