@@ -1,14 +1,12 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🧙‍♂️Harry_Potter🧙‍♂️&fontSize=90" />
-
-
 ## :bicyclist: 프로젝트 소개
 
 해당 질문에 답을 하여서 성향에 맞는 해리포터 총 4개의 기숙사 중 
 하나에 배정할 수 있는 간단한 테스트를 할 수 있는 사이트입니다. 
-
-
-![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/8f8e747d-8d04-4daf-9359-33ba8eb87394)
-
+<br/>
+<br/>
+<img width="1481" src="https://github.com/jaeyoung9083/Outsourcing_project/assets/133251374/8a55d45d-0e21-4968-a4ad-bb715eb20581">
+<br/>
+<br/>
 
 
 ### :boxing_glove: 개발기간
@@ -37,22 +35,29 @@
 ### :bouncing_ball_man: 화면 구성
 
 ## Main Page
-
-![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/9b0baf43-cde6-491c-8cc1-925f7f513a5b)
+<br/>
+<img width="1481" src="https://github.com/jaeyoung9083/Outsourcing_project/assets/133251374/3846db92-f7c0-4196-a6c2-94524c13bc67">
 
 
 
 
 
 ## Question Page
+<br/>
+<img width="1481" src="https://github.com/jaeyoung9083/Outsourcing_project/assets/133251374/ff02001b-e554-4f54-9ee7-8c74b1a0fb55">
+<br/>
+<br/>
+<img width="1481" src="https://github.com/jaeyoung9083/Outsourcing_project/assets/133251374/c46d4348-ec40-487b-a79b-21a785d176d6">
 
-![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/b4220887-d2f7-4bff-ad0b-1bdd9950edf5)
 
 
 ## Result Page
+<img width="1477" alt="스크린샷 2023-07-24 오전 6 51 12" src="https://github.com/jaeyoung9083/Outsourcing_project/assets/133251374/ab26de16-e549-4d50-9d25-0f5f4ae0ecef">
+<img width="1477" alt="스크린샷 2023-07-24 오전 6 51 45" src="https://github.com/jaeyoung9083/Outsourcing_project/assets/133251374/a6053063-041b-4e5e-939b-c89a033b2b90">
 
-![image](https://github.com/jaeyoung9083/Outsourcing_project/assets/69897998/d6cd4e26-7b26-4a56-a637-dcba9c4397fd)
 
+## Comments Page
+<img width="1477" alt="스크린샷 2023-07-24 오전 6 38 29" src="https://github.com/jaeyoung9083/Outsourcing_project/assets/133251374/652ad58c-cad5-4691-ab01-b26959bd0f86">
 
 ---
 
