@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -64,8 +65,10 @@ function Signup() {
   return (
     <>
       <SignupContainer>
+        <LogoContainer>
+          <LogoImg src={logo} style={{ marginLeft: '5px' }} />
+        </LogoContainer>
         <InputContainer>
-          <h2 style={{ marginBottom: '30px' }}>회원가입</h2>
           <div>
             <InputLabel>이메일</InputLabel>
             <InputBox
@@ -122,6 +125,18 @@ const SignupContainer = styled.div`
   border-radius: 10px;
 `;
 
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LogoImg = styled.img`
+  width: 130px;
+  height: auto;
+  margin: 20px;
+`;
+
 const InputContainer = styled.div`
   display: flex;
   align-items: center;
@@ -162,101 +177,3 @@ const StMainButton = styled.button`
 `;
 
 export default Signup;
-
-// import React, { useState } from 'react';
-// import { auth } from '../../firebase';
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
-// import { useNavigate } from 'react-router-dom';
-// import styled from 'styled-components';
-
-// const Signup = () => {
-//   const navigate = useNavigate();
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   // 이메일과 비밀번호 입력 받기
-//   const onChangeEmail = (event) => {
-//     setEmail(event.target.value);
-//   };
-//   const onChangePassword = (event) => {
-//     setPassword(event.target.value);
-//   };
-
-//   // 회원가입 버튼
-//   const signupButton = async (event) => {
-//     event.preventDefault();
-//     // 입력값 검사
-//     if (!email || !password) {
-//       return alert('아이디와 비밀번호를 모두 입력해주세요');
-//     }
-//     // 회원가입
-//     try {
-//       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-//       // 회원가입 완료 시 자동 로그인되기 때문에 홈으로 이동
-//       navigate('/');
-//     } catch (error) {
-//       // 에러 처리
-//     }
-//   };
-//   return (
-//     <SignupContainer>
-//       <h2>회원가입</h2>
-//       <SignupForm>
-//         <StyledLabel>이메일 :</StyledLabel>
-//         <StyledInput type="email" placeholder="이메일을 입력해주세요" value={email} onChange={onChangeEmail} />
-//         <StyledLabel>비밀번호 :</StyledLabel>
-//         <StyledInput
-//           type="password"
-//           placeholder="비밀번호를 입력해주세요"
-//           value={password}
-//           onChange={onChangePassword}
-//         />
-//         <StyledButton onClick={signupButton}>회원가입</StyledButton>
-//       </SignupForm>
-//     </SignupContainer>
-//   );
-// };
-
-// export default Signup;
-
-// const SignupContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   height: 100vh;
-// `;
-
-// const SignupForm = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 10px;
-//   border: 1px solid #ccc;
-//   border-radius: 5px;
-//   padding: 20px;
-//   max-width: 400px;
-// `;
-
-// const StyledLabel = styled.label`
-//   font-weight: bold;
-// `;
-
-// const StyledInput = styled.input`
-//   padding: 8px;
-//   border: 1px solid #ccc;
-//   border-radius: 3px;
-//   width: 250px;
-// `;
-
-// const StyledButton = styled.button`
-//   padding: 8px 20px;
-//   background-color: #007bff;
-//   color: white;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-
-//   &:hover {
-//     background-color: #0056b3;
-//   }
-// `;

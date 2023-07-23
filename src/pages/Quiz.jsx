@@ -14,6 +14,7 @@ const Quiz = () => {
   const [number, setNumber] = useState(5);
   const [pickedSheetRows, setPickedSheetRows] = useState([]);
   const totalQuizs = googleSheetRows.length;
+  const [showInputContainer, setShowInputContainer] = useState(true);
 
   useEffect(() => {
     const fetchGoogleSheetData = async () => {
@@ -104,6 +105,7 @@ const Quiz = () => {
   };
   const handleApplyButtonClick = () => {
     getQuestionsByNumber(number);
+    setShowInputContainer(false);
   };
   const getResult = (v1, v2) => {
     // 정규 표현식
@@ -123,13 +125,14 @@ const Quiz = () => {
   };
 
   return (
-    <div>
+    <div style={{ paddingBottom: '1000px' }}>
       {/* 숫자를 입력하는 입력란 */}
-      {!loading && (
+      {showInputContainer && !loading && (
         <>
           <Container>
             <Card>
-              <CardTitle>최소 5이상 {totalQuizs}만큼 조정해주세요</CardTitle>
+              <CardTitle>질문 개수를 선택해주세요!</CardTitle>
+              <CardText>5개 ~ {totalQuizs}개</CardText>
               <InputWrapper>
                 <StyledInput
                   min="5"
@@ -149,7 +152,7 @@ const Quiz = () => {
       {loading && (
         <BodyContainer>
           <Box sx={progressStyle}>
-            <h2 style={{ color: 'white' }}>로딩중...</h2>
+            <h2 style={{ color: 'white' }}>Loading ...</h2>
             <CircularProgress />
           </Box>
         </BodyContainer>
@@ -233,7 +236,7 @@ const CardWrapper = styled.div`
 
 const Container = styled.div`
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
@@ -244,16 +247,24 @@ const Container = styled.div`
 
 const Card = styled.div`
   background-color: #f0f0f0;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
 `;
 
-const CardTitle = styled.h2`
+const CardTitle = styled.div`
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+const CardText = styled.h2`
   margin-bottom: 10px;
   text-align: center;
+  font-size: 15px;
+  margin-bottom: 40px;
 `;
 
 const InputWrapper = styled.div`

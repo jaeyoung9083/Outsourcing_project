@@ -48,12 +48,12 @@ const Header = () => {
 export default Header;
 
 const Logo = styled.img`
-  width: 150px;
+  width: 130px;
   padding-left: 20px;
 `;
 
 const HeaderWrapper = styled.header`
-  background-color: #333;
+  background-color: #000000;
   padding: 20px;
   color: #fff;
 `;
@@ -87,10 +87,10 @@ const Nav = styled.nav`
 
 const NavLink = styled.a`
   color: #fff;
-  font-size: 20px;
-  font-weight: bolder;
   margin: 0 20px 0 20px;
   text-decoration: none;
+  font-family: 'noto-sans-kr', sans-serif;
+  font-weight: 400;
 
   &:hover {
     text-decoration: underline;

@@ -97,7 +97,7 @@ const Result = ({ result, googleSheetRows, places, images, pickedSheetRows }) =>
           </AccordionWrapper>
         </div>
         {/* 해리포터 기숙사 관련 Youtube 영상 */}
-        <ContentTitle>해리포터 기숙사 배정 알아보기</ContentTitle>
+        <ContentTitle>추천 영상</ContentTitle>
         <Video />
       </ResultContainer>
     </>
