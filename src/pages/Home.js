@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import background from '../assets/background.png';
+import background from '../assets/background.jpg';
+import mainLogo from '../assets/mainLogo.png';
 
 function Home() {
   return (
     <div>
       <BodyContainer>
         <ContentContainer>
-          <Heading>호그와트 기숙사 테스트</Heading>
-          <Paragraph>꿀잼보장 38000%</Paragraph>
-          <Button href="/quiz">설문시작!</Button>
+          <Logo src={mainLogo} />
+          <Heading>나의 기숙사는 과연 어디일까 🪄</Heading>
+          {/* <Paragraph>꿀잼보장 38000%</Paragraph> */}
+          <Button href="/quiz">테스트 시작하기</Button>
         </ContentContainer>
       </BodyContainer>
     </div>
@@ -24,12 +26,11 @@ const BodyContainer = styled.div`
   background-image: url(${background});
   background-size: cover;
   background-position: center;
-  font-family: Arial, sans-serif;
   height: 100vh;
-  /* Adjust this as needed to fit your content */
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   @keyframes blink {
     0% {
@@ -43,34 +44,28 @@ const BodyContainer = styled.div`
     }
   }
 
-  
-    animation: blink 5s infinite;
-
+  animation: blink 5s infinite;
 `;
 
-// Create a styled component for the container div
 const ContentContainer = styled.div`
-  text-align: center;
   padding: 100px 20px;
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
 `;
 
-// Create a styled component for the h1 element
-const Heading = styled.h1`
-  font-size: 48px;
-  margin-bottom: 20px;
-`;
-
-// Create a styled component for the p element
-const Paragraph = styled.p`
-  font-size: 24px;
+const Heading = styled.div`
+  font-family: 'noto-sans-kr', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 50px;
 `;
 
 const Button = styled.a`
   padding: 12px 24px;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
   border: none;
+  text-decoration: none;
   background-color: #007bff;
   color: #fff;
   border-radius: 4px;
@@ -89,4 +84,10 @@ const Button = styled.a`
   &:active {
     transform: scale(0.98);
   }
+`;
+
+const Logo = styled.img`
+  width: 600px;
+  margin-top: -60px;
+  margin-bottom: 150px;
 `;

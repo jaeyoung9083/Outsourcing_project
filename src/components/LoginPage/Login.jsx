@@ -48,41 +48,37 @@ function Login() {
   // }, [user, navigate]);
   return (
     <LoginContainer>
+      <h2 style={{ marginTop: '50px' }}>로그인</h2>
       <LoginForm>
-        <span>로그인</span>
-        <div>
-          <StyledLabel>이메일 :</StyledLabel>
-          <StyledInput
-            type="email"
-            placeholder="이메일을 입력해주세요"
-            value={email}
-            name="email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <StyledLabel>비밀번호 :</StyledLabel>
-          <StyledInput
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-            value={password}
-            name="password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </div>
-        <StyledButton onClick={signInFunc}>로그인</StyledButton>
+        <StyledLabel>이메일 :</StyledLabel>
+        <StyledInput
+          type="email"
+          placeholder="이메일을 입력해주세요"
+          value={email}
+          name="email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <StyledLabel>비밀번호 :</StyledLabel>
+        <StyledInput
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+          value={password}
+          name="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
         <StyledLink
           onClick={(e) => {
             e.preventDefault();
             navigate('/signup');
           }}
         >
-          회원가입 하로 가기
+          회원가입
         </StyledLink>
+        <StyledButton onClick={signInFunc}>로그인</StyledButton>
       </LoginForm>
     </LoginContainer>
   );
@@ -93,19 +89,20 @@ export default Login;
 // Define your styled-components
 const LoginContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
 `;
 
 const LoginForm = styled.form`
-  background-color: #f1f1f1;
-  padding: 20px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  gap: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px 20px 30px 20px;
+  max-width: 400px;
+  margin-top: 10px;
 `;
 
 const StyledLabel = styled.label`
@@ -117,6 +114,18 @@ const StyledInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 3px;
   width: 250px;
+  margin-bottom: 10px;
+`;
+
+const StyledLink = styled.p`
+  margin-top: 30px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  color: #007bff;
+  text-align: center;
+  font-family: 'noto-sans-kr', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
 `;
 
 const StyledButton = styled.button`
@@ -130,10 +139,4 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #0056b3;
   }
-`;
-
-const StyledLink = styled.p`
-  margin-top: 10px;
-  cursor: pointer;
-  color: #007bff;
 `;

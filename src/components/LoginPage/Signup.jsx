@@ -35,7 +35,7 @@ const Signup = () => {
   };
   return (
     <SignupContainer>
-      <h2>회원가입</h2>
+      <h2 style={{ marginTop: '50px' }}>회원가입</h2>
       <SignupForm>
         <StyledLabel>이메일 :</StyledLabel>
         <StyledInput type="email" placeholder="이메일을 입력해주세요" value={email} onChange={onChangeEmail} />
@@ -64,12 +64,12 @@ const SignupContainer = styled.div`
 const SignupForm = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 20px;
+  padding: 30px 20px 30px 20px;
   max-width: 400px;
+  margin-top: 10px;
 `;
 
 const StyledLabel = styled.label`
@@ -81,9 +81,11 @@ const StyledInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 3px;
   width: 250px;
+  margin-bottom: 10px;
 `;
 
 const StyledButton = styled.button`
+  margin-top: 40px;
   padding: 8px 20px;
   background-color: #007bff;
   color: white;
