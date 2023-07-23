@@ -1,7 +1,7 @@
 // db.json
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import background from '../assets/background.png';
+import background from '../assets/CommentsBackground.jpg';
 import { nanoid } from '@reduxjs/toolkit';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getComments, addComment, deleteComment, editComment } from '../api/comments';
@@ -96,13 +96,13 @@ const Comments = () => {
   return (
     <>
       <CommentContainer>
-        <MainTitle>당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
+        <MainTitle>🧙 당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
         <InputBox>
           <Input>
-            작성자 : <input value={name} onChange={onChangeName} style={{ height: '20px' }} />
+            작성자 : <input value={name} onChange={onChangeName} style={{ height: '20px', width: '150px' }} />
           </Input>
           <Input>
-            댓글 : <input value={content} onChange={onChangeContent} style={{ height: '20px' }} />
+            댓글 : <input value={content} onChange={onChangeContent} style={{ height: '20px', width: '280px' }} />
           </Input>
           <StButton style={{ width: '100px' }} onClick={addButton}>
             댓글 추가
@@ -121,7 +121,7 @@ const Comments = () => {
                   <input value={editedContent} onChange={onChangeEditedContent} />
                 </Content>
               ) : (
-                <Content>내용: {comment.content}</Content>
+                <Content>{comment.content}</Content>
               )}
               <ButtonBox>
                 <StButton onClick={() => deleteButton(comment.id)}>삭제</StButton>
@@ -148,16 +148,17 @@ const CommentContainer = styled.div`
 const MainTitle = styled.div`
   display: flex;
   justify-content: center;
-  padding: 40px;
-  font-size: 30px;
-  font-weight: bolder;
+  padding: 100px 40px 40px 40px;
+  font-family: 'noto-sans-kr', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
   color: #fff;
 `;
 
 const CommentBox = styled.div`
   overflow-y: auto;
   max-width: 700px;
-  max-height: 700px;
+  max-height: 500px;
   margin: auto;
 `;
 
@@ -166,12 +167,12 @@ const InputBox = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
-  padding: 15px;
+  padding: 10px;
 `;
 
 const Input = styled.div`
   margin: 15px;
-  font-size: 18px;
+  font-size: 15px;
   color: #fff;
 `;
 
@@ -179,7 +180,7 @@ const Comment = styled.div`
   margin: 10px;
   padding: 15px 20px 15px 20px;
   border-radius: 10px;
-  background-color: #141b3f8b;
+  background-color: #0000008a;
   color: #fff;
 `;
 
@@ -197,7 +198,7 @@ const StButton = styled.button`
   height: 28px;
   font-size: 14px;
   color: white;
-  background-color: #b5b012;
+  background-color: #cfa33c;
   border: none;
   border-radius: 20px;
   margin: 0 5px 0 5px;
