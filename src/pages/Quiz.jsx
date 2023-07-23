@@ -163,8 +163,8 @@ const Quiz = () => {
           return (
             <CardWrapper key={index}>
               <Card>
-                <h1>{index + 1 + '/' + pickedSheetRows.length}</h1>
-                <h2>{v.q}</h2>
+                <div style={{ marginBottom: '15px' }}>{index + 1 + '/' + pickedSheetRows.length}</div>
+                <QuizTitle>{v.q}</QuizTitle>
 
                 {getResult(v.a, v.type).map((answer, answerIndex) => (
                   <React.Fragment key={answerIndex}>
@@ -206,12 +206,20 @@ const BodyContainer = styled.div`
   align-items: center;
 `;
 
+const QuizTitle = styled.div`
+  font-family: 'noto-sans-kr', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  line-height: 1.5;
+`;
+
 // Styled Components로 스타일링된 버튼 컴포넌트
 const QuizButton = styled.button`
-  background-color: #4caf50;
+  background-color: #333;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 50px;
   margin: 20px 0px;
   text-align: center;
   text-decoration: none;
@@ -222,7 +230,7 @@ const QuizButton = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #cfa33c;
   }
 `;
 
@@ -285,16 +293,16 @@ const StyledInput = styled.input`
 `;
 
 const InputButton = styled.button`
-  background-color: #4caf50;
+  background-color: #333;
   color: white;
   border: none;
-  padding: 8px 12px;
+  padding: 8px 20px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #cfa33c;
   }
 `;
