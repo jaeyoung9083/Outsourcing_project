@@ -55,25 +55,25 @@ const ContentContainer = styled.div`
 
 const Heading = styled.div`
   font-family: 'noto-sans-kr', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   margin-bottom: 50px;
 `;
 
 const Button = styled.a`
-  padding: 12px 24px;
+  padding: 10px 70px;
   font-size: 18px;
   font-weight: bold;
-  border: none;
+  border: 1px solid #cfa33c;
   text-decoration: none;
-  background-color: #007bff;
+  background-color: black;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #cfa33c;
   }
 
   &:focus {

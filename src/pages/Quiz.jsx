@@ -125,10 +125,10 @@ const Quiz = () => {
   };
 
   return (
-    <div style={{ paddingBottom: '1000px' }}>
+    <div>
       {/* 숫자를 입력하는 입력란 */}
       {showInputContainer && !loading && (
-        <>
+        <div style={{ marginBottom: '700px' }}>
           <Container>
             <Card>
               <CardTitle>질문 개수를 선택해주세요!</CardTitle>
@@ -146,7 +146,7 @@ const Quiz = () => {
               </InputWrapper>
             </Card>
           </Container>
-        </>
+        </div>
       )}
 
       {loading && (
@@ -200,7 +200,7 @@ const BodyContainer = styled.div`
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;
-  height: 50vh; /* Adjust this as needed to fit your content */
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;

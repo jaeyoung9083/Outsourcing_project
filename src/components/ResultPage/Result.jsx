@@ -179,7 +179,7 @@ const StButton = styled.button`
   font-size: 15px;
   font-weight: bolder;
   color: white;
-  background-color: #202763;
+  background-color: #000000;
   border: none;
   border-radius: 20px;
   margin: 0 10px 0 10px;

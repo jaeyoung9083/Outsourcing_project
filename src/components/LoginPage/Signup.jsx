@@ -66,7 +66,7 @@ function Signup() {
     <>
       <SignupContainer>
         <LogoContainer>
-          <LogoImg src={logo} style={{ marginLeft: '5px' }} />
+          <LogoImg src={logo} style={{ margin: '50px 0px 50px 0px' }} />
         </LogoContainer>
         <InputContainer>
           <div>
@@ -150,7 +150,7 @@ const InputLabel = styled.div`
 `;
 
 const InputBox = styled.input`
-  width: 300px;
+  width: 282px;
   height: 30px;
   margin: 5px 5px 10px;
   padding-left: 10px;

@@ -38,7 +38,8 @@ function Video() {
         overflowX: 'auto', // 가로 스크롤바 생성을 위한 설정
         display: 'flex',
         gap: '10px',
-        paddingBottom: '20px'
+        paddingBottom: '20px',
+        marginBottom: '50px'
       }}
     >
       {videos.map((video) => (
