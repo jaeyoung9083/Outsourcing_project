@@ -15,8 +15,6 @@ const Header = () => {
     });
   }, []);
 
-  console.log(currentUserName);
-
   // 로그아웃
   const logout = async (event) => {
     event.preventDefault();
