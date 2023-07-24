@@ -1,8 +1,10 @@
 // db.json
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
-import background from '../assets/CommentsBackground.jpg';
+import background from '../assets/background.png';
 import { nanoid } from '@reduxjs/toolkit';
+import { auth } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getComments, addComment, deleteComment, editComment } from '../api/comments';
 
@@ -11,6 +13,14 @@ const Comments = () => {
   const [content, setContent] = useState('');
   const [editId, setEditId] = useState(null);
   const [editedContent, setEditedContent] = useState('');
+  const [currentUserName, setCurrentUserName] = useState(null);
+
+  // 유저 로그인 상태 확인
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUserName(user?.displayName);
+    });
+  }, []);
 
   // 입력값 받기
   const onChangeName = (event) => {
@@ -35,7 +45,9 @@ const Comments = () => {
   });
   const addButton = () => {
     // 입력값 확인
-    if (!name || !content) {
+    if (currentUserName && !content) {
+      alert('댓글을 입력해주세요');
+    } else if ((!currentUserName && !name) || !content) {
       alert('작성자와 댓글을 모두 입력해주세요');
       return;
     }
@@ -96,11 +108,15 @@ const Comments = () => {
   return (
     <>
       <CommentContainer>
-        <MainTitle>🧙 당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
+        <MainTitle>당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
         <InputBox>
-          <Input>
-            작성자 : <input value={name} onChange={onChangeName} style={{ height: '20px', width: '150px' }} />
-          </Input>
+          {currentUserName ? (
+            <Input>작성자 : {currentUserName}</Input>
+          ) : (
+            <Input>
+              작성자 : <input value={name} onChange={onChangeName} style={{ height: '20px' }} />
+            </Input>
+          )}
           <Input>
             댓글 : <input value={content} onChange={onChangeContent} style={{ height: '20px', width: '280px' }} />
           </Input>
@@ -118,10 +134,14 @@ const Comments = () => {
               {comment.id === editId ? (
                 <Content>
                   <span>내용: </span>
-                  <input value={editedContent} onChange={onChangeEditedContent} />
+                  <input
+                    value={editedContent}
+                    onChange={onChangeEditedContent}
+                    style={{ height: '20px', width: '400px' }}
+                  />
                 </Content>
               ) : (
-                <Content>{comment.content}</Content>
+                <Content>내용: {comment.content}</Content>
               )}
               <ButtonBox>
                 <StButton onClick={() => deleteButton(comment.id)}>삭제</StButton>
@@ -148,17 +168,16 @@ const CommentContainer = styled.div`
 const MainTitle = styled.div`
   display: flex;
   justify-content: center;
-  padding: 100px 40px 40px 40px;
-  font-family: 'noto-sans-kr', sans-serif;
-  font-size: 25px;
-  font-weight: 400;
+  padding: 40px;
+  font-size: 30px;
+  font-weight: bolder;
   color: #fff;
 `;
 
 const CommentBox = styled.div`
   overflow-y: auto;
   max-width: 700px;
-  max-height: 500px;
+  max-height: 700px;
   margin: auto;
 `;
 
@@ -167,12 +186,12 @@ const InputBox = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
-  padding: 10px;
+  padding: 15px;
 `;
 
 const Input = styled.div`
   margin: 15px;
-  font-size: 15px;
+  font-size: 18px;
   color: #fff;
 `;
 
@@ -180,7 +199,7 @@ const Comment = styled.div`
   margin: 10px;
   padding: 15px 20px 15px 20px;
   border-radius: 10px;
-  background-color: #0000008a;
+  background-color: #141b3f8b;
   color: #fff;
 `;
 
