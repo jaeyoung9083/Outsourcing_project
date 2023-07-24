@@ -29,7 +29,9 @@ const Header = () => {
         </Link>
         {currentUserName ? (
           <div>
-            <Profile>'{currentUserName}'님 호그와트에 오신 걸 환영합니다</Profile>
+            <Profile>
+              <ProfileName>{currentUserName}</ProfileName>님 호그와트에 오신 걸 환영합니다
+            </Profile>
             <LogoutBt onClick={logout}>Logout</LogoutBt>
           </div>
         ) : (
@@ -58,14 +60,21 @@ const HeaderWrapper = styled.header`
 
 const Profile = styled.span`
   color: #fff;
-  font-size: 20px;
-  font-weight: bolder;
+  font-family: 'noto-sans-kr', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+`;
+
+const ProfileName = styled.span`
+  font-family: 'noto-sans-kr', sans-serif;
+  font-weight: 500;
 `;
 
 const LogoutBt = styled.button`
   color: #fff;
-  font-size: 20px;
-  font-weight: bolder;
+  font-family: 'noto-sans-kr', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
   margin: 0 20px 0 20px;
   appearance: none;
   outline: none;
@@ -88,6 +97,7 @@ const NavLink = styled.a`
   margin: 0 20px 0 20px;
   text-decoration: none;
   font-family: 'noto-sans-kr', sans-serif;
+  font-size: 15px;
   font-weight: 400;
 
   &:hover {

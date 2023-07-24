@@ -47,25 +47,27 @@ function Login() {
     <>
       <LoginContainer>
         <LogoContainer>
-          <LogoImg src={logo} style={{ marginLeft: '5px' }} />
+          <LogoImg src={logo} style={{ margin: '50px 0px 50px 0px' }} />
         </LogoContainer>
         <MainContainer>
-          <InputBox
-            type="email"
-            placeholder="이메일을 입력해주세요."
-            value={email}
-            name="email"
-            onChange={onChangeHandler}
-            required
-          />
-          <InputBox
-            type="password"
-            placeholder="비밀번호를 입력해주세요."
-            value={password}
-            name="password"
-            onChange={onChangeHandler}
-            required
-          />
+          <div style={{ marginBottom: '50px' }}>
+            <InputBox
+              type="email"
+              placeholder="이메일을 입력해주세요"
+              value={email}
+              name="email"
+              onChange={onChangeHandler}
+              required
+            />
+            <InputBox
+              type="password"
+              placeholder="비밀번호를 입력해주세요"
+              value={password}
+              name="password"
+              onChange={onChangeHandler}
+              required
+            />
+          </div>
           <StButton backgroundcolor="#333" border="#333" color="white" onClick={loginButtonHandler}>
             로그인
           </StButton>
