@@ -1,16 +1,27 @@
 // db.json
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components';
-import background from '../assets/CommentsBackground.jpg';
+import background from '../assets/background.png';
 import { nanoid } from '@reduxjs/toolkit';
+import { auth } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getComments, addComment, deleteComment, editComment } from '../api/comments';
 
 const Comments = () => {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
+  const [password, setPassword] = useState('');
   const [editId, setEditId] = useState(null);
   const [editedContent, setEditedContent] = useState('');
+  const [currentUserName, setCurrentUserName] = useState(null);
+
+  // 유저 로그인 상태 확인
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUserName(user?.displayName);
+    });
+  }, []);
 
   // 입력값 받기
   const onChangeName = (event) => {
@@ -18,6 +29,9 @@ const Comments = () => {
   };
   const onChangeContent = (event) => {
     setContent(event.target.value);
+  };
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
   };
   const onChangeEditedContent = (event) => {
     setEditedContent(event.target.value);
@@ -35,7 +49,9 @@ const Comments = () => {
   });
   const addButton = () => {
     // 입력값 확인
-    if (!name || !content) {
+    if (currentUserName && !content) {
+      alert('댓글을 입력해주세요');
+    } else if ((!currentUserName && !name) || !content) {
       alert('작성자와 댓글을 모두 입력해주세요');
       return;
     }
@@ -51,7 +67,8 @@ const Comments = () => {
     // 새로운 댓글 객체 생성
     const newComment = {
       id: nanoid(),
-      name,
+      password,
+      name: currentUserName ? currentUserName : name,
       content,
       date,
       time
@@ -62,6 +79,9 @@ const Comments = () => {
     setContent('');
   };
 
+  // 유저가 있을 때 유저가 쓴 댓글만 찾기
+  const userCommnets = comments?.filter((comment) => comment.name === currentUserName);
+
   // 댓글 삭제
   const deleteMutation = useMutation(deleteComment, {
     onSuccess: () => {
@@ -69,8 +89,27 @@ const Comments = () => {
     }
   });
   const deleteButton = (id) => {
-    alert('댓글을 삭제하시겠습니까?');
-    deleteMutation.mutate(id);
+    if (!currentUserName) {
+      const checkpassword = prompt('비밀번호를 입력하세요');
+      if (checkpassword === null) return;
+
+      // 비밀번호가 비어있거나 일치하지 않는 경우
+      if (checkpassword === '' || checkpassword !== password) {
+        alert('비밀번호가 일치하지 않습니다.');
+      } else {
+        // 사용자가 확인을 누른 경우에만 삭제 로직 실행
+        const shouldDelete = window.confirm('댓글을 삭제하시겠습니까?');
+        if (shouldDelete) {
+          deleteMutation.mutate(id);
+        }
+      }
+    } else {
+      // 로그인한 경우 사용자가 확인을 누른 경우에만 삭제 로직 실행
+      const shouldDelete = window.confirm('댓글을 삭제하시겠습니까?');
+      if (shouldDelete) {
+        deleteMutation.mutate(id);
+      }
+    }
   };
 
   // 댓글 수정
@@ -80,29 +119,88 @@ const Comments = () => {
     }
   });
   const editButton = (comment) => {
-    setEditId(comment.id);
-    if (!editId) {
-      setEditedContent(comment.content);
+    if (!currentUserName) {
+      if (editId === comment.id) {
+        setEditId(null);
+      } else {
+        const checkpassword = prompt('비밀번호를 입력하세요');
+        if (checkpassword === null) return;
+        if (checkpassword === '' || checkpassword !== password) {
+          alert('비밀번호가 일치하지 않습니다.');
+          return;
+        }
+        setEditId(comment.id);
+        setPassword(checkpassword);
+      }
+      if (!editId) {
+        setEditedContent(comment.content);
+      } else {
+        const editedComment = {
+          ...comment,
+          content: editedContent
+        };
+        editMutation.mutate(editedComment);
+        setEditId(null);
+      }
     } else {
-      const editedComment = {
-        ...comment,
-        content: editedContent
-      };
-      editMutation.mutate(editedComment);
-      setEditId(null);
+      // 유저가 있는 경우 수정 버튼을 누르면 수정 가능하도록 구현
+      setEditId(comment.id);
+      setEditedContent(comment.content);
     }
+  };
+
+  // 저장 버튼
+  const saveButton = (comment) => {
+    const editedComment = {
+      ...comment,
+      content: editedContent
+    };
+    editMutation.mutate(editedComment);
+    setEditId(null);
   };
 
   return (
     <>
       <CommentContainer>
-        <MainTitle>🧙 당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
+        <MainTitle>당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
         <InputBox>
+          {currentUserName ? (
+            <Input>작성자 : {currentUserName}</Input>
+          ) : (
+            <Input>
+              작성자 :{' '}
+              <input
+                placeholder="작성자를 입력해주세요"
+                value={name}
+                onChange={onChangeName}
+                style={{ height: '20px', width: '150px' }}
+              />
+            </Input>
+          )}
+          {currentUserName ? (
+            <></>
+          ) : (
+            <Input>
+              비밀번호 :{' '}
+              <input
+                type="password"
+                placeholder="숫자 4자리"
+                value={password}
+                onChange={onChangePassword}
+                style={{ height: '20px', width: '100px' }}
+              />
+            </Input>
+          )}
+        </InputBox>
+        <InputBox style={{ marginBottom: '40px' }}>
           <Input>
-            작성자 : <input value={name} onChange={onChangeName} style={{ height: '20px', width: '150px' }} />
-          </Input>
-          <Input>
-            댓글 : <input value={content} onChange={onChangeContent} style={{ height: '20px', width: '280px' }} />
+            댓글 :{' '}
+            <input
+              placeholder="내용을 입력해주세요"
+              value={content}
+              onChange={onChangeContent}
+              style={{ height: '20px', width: '400px' }}
+            />
           </Input>
           <StButton style={{ width: '100px' }} onClick={addButton}>
             댓글 추가
@@ -118,15 +216,35 @@ const Comments = () => {
               {comment.id === editId ? (
                 <Content>
                   <span>내용: </span>
-                  <input value={editedContent} onChange={onChangeEditedContent} />
+                  <input
+                    value={editedContent}
+                    onChange={onChangeEditedContent}
+                    style={{ height: '20px', width: '400px' }}
+                  />
                 </Content>
               ) : (
-                <Content>{comment.content}</Content>
+                <Content>내용: {comment.content}</Content>
               )}
-              <ButtonBox>
-                <StButton onClick={() => deleteButton(comment.id)}>삭제</StButton>
-                <StButton onClick={() => editButton(comment)}>{comment.id === editId ? '저장' : '수정'}</StButton>
-              </ButtonBox>
+              {currentUserName === comment.name && (
+                <ButtonBox>
+                  <StButton onClick={() => deleteButton(comment.id)}>삭제</StButton>
+                  {comment.id === editId ? (
+                    <StButton onClick={() => saveButton(comment)}>저장</StButton>
+                  ) : (
+                    <StButton onClick={() => editButton(comment)}>수정</StButton>
+                  )}
+                </ButtonBox>
+              )}
+              {!currentUserName && (
+                <ButtonBox>
+                  <StButton onClick={() => deleteButton(comment.id)}>삭제</StButton>
+                  {comment.id === editId ? (
+                    <StButton onClick={() => saveButton(comment)}>저장</StButton>
+                  ) : (
+                    <StButton onClick={() => editButton(comment)}>수정</StButton>
+                  )}
+                </ButtonBox>
+              )}
             </Comment>
           ))}
         </CommentBox>
@@ -148,17 +266,16 @@ const CommentContainer = styled.div`
 const MainTitle = styled.div`
   display: flex;
   justify-content: center;
-  padding: 100px 40px 40px 40px;
-  font-family: 'noto-sans-kr', sans-serif;
-  font-size: 25px;
-  font-weight: 400;
+  padding: 40px;
+  font-size: 30px;
+  font-weight: bolder;
   color: #fff;
 `;
 
 const CommentBox = styled.div`
   overflow-y: auto;
   max-width: 700px;
-  max-height: 500px;
+  max-height: 700px;
   margin: auto;
 `;
 
@@ -166,13 +283,13 @@ const InputBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
-  padding: 10px;
+  margin: 10px 0 20px 0;
+  padding: 0px;
 `;
 
 const Input = styled.div`
-  margin: 15px;
-  font-size: 15px;
+  margin: 0 15px 0 15px;
+  font-size: 18px;
   color: #fff;
 `;
 
@@ -180,7 +297,7 @@ const Comment = styled.div`
   margin: 10px;
   padding: 15px 20px 15px 20px;
   border-radius: 10px;
-  background-color: #0000008a;
+  background-color: #141b3f8b;
   color: #fff;
 `;
 
