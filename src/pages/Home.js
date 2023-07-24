@@ -9,7 +9,7 @@ function Home() {
       <BodyContainer>
         <ContentContainer>
           <Logo src={mainLogo} />
-          <Heading>나의 기숙사는 과연 어디일까 🪄</Heading>
+          <Heading>나의 기숙사는 과연 어디일까 ✍🏼</Heading>
           {/* <Paragraph>꿀잼보장 38000%</Paragraph> */}
           <Button href="/quiz">테스트 시작하기</Button>
         </ContentContainer>

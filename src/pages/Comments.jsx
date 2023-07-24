@@ -79,35 +79,30 @@ const Comments = () => {
     setContent('');
   };
 
-  // 유저가 있을 때 유저가 쓴 댓글만 찾기
-  const userCommnets = comments?.filter((comment) => comment.name === currentUserName);
-
   // 댓글 삭제
   const deleteMutation = useMutation(deleteComment, {
     onSuccess: () => {
       queryClient.invalidateQueries('comments');
     }
   });
-  const deleteButton = (id) => {
+  const deleteButton = (comment) => {
     if (!currentUserName) {
       const checkpassword = prompt('비밀번호를 입력하세요');
       if (checkpassword === null) return;
 
       // 비밀번호가 비어있거나 일치하지 않는 경우
-      if (checkpassword === '' || checkpassword !== password) {
+      if (checkpassword === '' || checkpassword !== comment.password) {
         alert('비밀번호가 일치하지 않습니다.');
-      } else {
-        // 사용자가 확인을 누른 경우에만 삭제 로직 실행
-        const shouldDelete = window.confirm('댓글을 삭제하시겠습니까?');
-        if (shouldDelete) {
-          deleteMutation.mutate(id);
-        }
+      }
+      // 비밀번호가 일치하는 경우
+      if (checkpassword === comment.password) {
+        deleteMutation.mutate(comment.id);
       }
     } else {
       // 로그인한 경우 사용자가 확인을 누른 경우에만 삭제 로직 실행
       const shouldDelete = window.confirm('댓글을 삭제하시겠습니까?');
       if (shouldDelete) {
-        deleteMutation.mutate(id);
+        deleteMutation.mutate(comment.id);
       }
     }
   };
@@ -125,7 +120,7 @@ const Comments = () => {
       } else {
         const checkpassword = prompt('비밀번호를 입력하세요');
         if (checkpassword === null) return;
-        if (checkpassword === '' || checkpassword !== password) {
+        if (checkpassword === '' || checkpassword !== comment.password) {
           alert('비밀번호가 일치하지 않습니다.');
           return;
         }
@@ -162,7 +157,7 @@ const Comments = () => {
   return (
     <>
       <CommentContainer>
-        <MainTitle>당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
+        <MainTitle>🧙🏼‍♂️ 당신은 어떤 기숙사를 배정 받으셨나요?</MainTitle>
         <InputBox>
           {currentUserName ? (
             <Input>작성자 : {currentUserName}</Input>
@@ -227,7 +222,7 @@ const Comments = () => {
               )}
               {currentUserName === comment.name && (
                 <ButtonBox>
-                  <StButton onClick={() => deleteButton(comment.id)}>삭제</StButton>
+                  <StButton onClick={() => deleteButton(comment)}>삭제</StButton>
                   {comment.id === editId ? (
                     <StButton onClick={() => saveButton(comment)}>저장</StButton>
                   ) : (
@@ -237,7 +232,7 @@ const Comments = () => {
               )}
               {!currentUserName && (
                 <ButtonBox>
-                  <StButton onClick={() => deleteButton(comment.id)}>삭제</StButton>
+                  <StButton onClick={() => deleteButton(comment)}>삭제</StButton>
                   {comment.id === editId ? (
                     <StButton onClick={() => saveButton(comment)}>저장</StButton>
                   ) : (
